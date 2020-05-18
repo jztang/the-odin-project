@@ -1,0 +1,27 @@
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    background-color: #f3f3f3;
+    border: none;
+    padding: 7px 15px;
+    border-radius: 2px;
+}
+
+#sign-in-button {
+    font-weight: 700;
+    background-color: #4485f6;
+    color: white;
+}
+
+/* { border: 1px solid black; }
