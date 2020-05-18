@@ -2,11 +2,7 @@ body {
     font-family: "Roboto", sans-serif;
     font-size: 14px;
     font-weight: 300;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
+    /*text-align: center;*/
 }
 
 button {
@@ -16,13 +12,29 @@ button {
     background-color: #f3f3f3;
     border: none;
     padding: 7px 15px;
-    border-radius: 2px;
+    border-radius: 3px;
 }
 
-#sign-in-button {
+#sign-in {
     font-weight: 700;
     background-color: #4485f6;
     color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    margin: 10px;
+}
+
+#left-header, #right-header {
+    display: flex;
+    align-items: center;
+}
+
+#about, #store, #gmail, #images, #menu, #sign-in {
+    margin: 10px;
 }
 
 /* { 
