@@ -1,71 +1,24 @@
-<script>
-    function computerPlay() {
-        let move = Math.floor(Math.random() * 3);
-
-        if(move === 0) {
-            return "rock";
-        } else if(move === 1) {
-            return "paper";
-        } else {
-            return "scissors";
-        }
-    }
-
-    let playerScore = 0;
-    let computerScore = 0;
-
-    function playOneRound(playerSelection, computerSelection) {
-        let playerMove = playerSelection.toLowerCase();
-        let computerMove = computerSelection.toLowerCase();
-
-        if(playerMove === "rock") {
-            if (computerMove === "rock") {
-                return "It's a tie! Rock is equal to rock.";
-            } else if (computerMove === "paper") {
-                computerScore++;
-                return "You lose! Paper beats rock.";
-            } else if (computerMove === "scissors") {
-                playerScore++;
-                return "You win! Rock beats scissors.";
-            }
-        } else if(playerMove === "paper") {
-            if (computerMove === "rock") {
-                playerScore++;
-                return "You win! Paper beats rock.";
-            } else if (computerMove === "paper") {
-                return "It's a tie! Paper is equal to paper.";
-            } else if (computerMove === "scissors") {
-                computerScore++;
-                return "You lose! Scissors beats paper.";
-            }
-        } else if(playerMove === "scissors") {
-            if (computerMove === "rock") {
-                computerScore++;
-                return "You lose! Rock beats scissors.";
-            } else if (computerMove === "paper") {
-                playerScore++;
-                return "You win! Scissors beats paper.";
-            } else if (computerMove === "scissors") {
-                return "It's a tie! Scissors is equal to scissors.";
-            }
-        }
-    }
-
-    function game() {
-        playerScore = 0;
-        computerScore = 0;
-
-        for(let i = 0; i < 5; i++) {
-            let playerSelection = window.prompt("Pick rock, paper, or scissors.");
-            console.log(playOneRound(playerSelection, computerPlay()));
-        }
-
-        if(playerScore > computerScore) {
-            console.log(`You win ${playerScore} to ${computerScore}`);
-        } else if(playerScore < computerScore) {
-            console.log(`You lose ${playerScore} to ${computerScore}`);
-        } else {
-            console.log(`It's a tie ${playerScore} to ${computerScore}`);
-        }
-    }
-</script>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <script defer src="game.js"></script>
+    </head>
+    <body>
+        <h2>Rock, Paper, Scissors!</h2>
+        <div id="game">
+            <div id="player-score">Your score: 0</div>
+            <div id="computer-score">Computer score: 0</div>
+            <div id="game-buttons">
+                <button id="rock">Rock</button>
+                <button id="paper">Paper</button>
+                <button id="scissors">Scissors</button> 
+            </div>
+            <div id="result-text"></div>
+            <div id="end-text"></div>
+        </div>
+        <div id="start-game">
+            <button id="start-game-button">Start game</button>
+        </div>
+    </body>
+</html>
+ 
