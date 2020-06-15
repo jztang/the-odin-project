@@ -1,3 +1,13 @@
+let displayText = "";
+
+// numbers
+for(let i = 0; i <= 9; i++) {
+    document.querySelector(`#button-${i}`).addEventListener("click", () => {
+        displayText += i;
+        updateDisplay();
+    });
+}
+
 function add(x, y) {
     return x + y;
 }
@@ -21,4 +31,8 @@ function operate(operator, x, y) {
         case "multiply": return multiply(x, y); break;
         case "divide": return divide(x, y); break;
     }
+}
+
+function updateDisplay() {
+    document.querySelector("#display-text").textContent = displayText;
 }
