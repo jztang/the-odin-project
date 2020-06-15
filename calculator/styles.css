@@ -1,0 +1,55 @@
+p {
+    font-family: Roboto;
+    font-size: 30px;
+}
+
+#calculator {
+    height: 600px;
+    width: 400px;
+    border: 1px solid;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+#display {
+    grid-column: 1 / 5;
+    border: 1px solid;
+    border-radius: 12px;
+    margin: 20px;
+    
+    display: flex;
+    align-items: center;
+    flex-flow: row-reverse;
+}
+
+#display-text {
+    padding: 15px;
+}
+
+#numbers {
+    grid-column: 1 / 4;
+    grid-row: 2 / 6;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+#operators {
+    grid-column: 4 / 5;
+    grid-row: 2 / 6;
+    display: grid;
+}
+
+.button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    height: 65px;
+    width: 65px;
+    border-radius: 12px;
+}
