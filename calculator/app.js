@@ -1,4 +1,6 @@
-let calcEntry = "";
+let calcEntry = ""; // expression being entered
+
+// flags for making sure operations are correct
 let hasDecimal = false;
 let isNumber = false;
 let isNegative = false;
@@ -42,6 +44,7 @@ for (let i = 0; i < operators.length; i++) {
     });
 }
 
+// do a calculation based on the operator and two numbers
 function operate(operator, x, y) {
     switch (operator) {
         case "add": return x + y;
@@ -51,6 +54,7 @@ function operate(operator, x, y) {
     }
 }
 
+// updates the calculator display
 function updateDisplay() {
     document.querySelector("#display-text").textContent = calcEntry;
 }
