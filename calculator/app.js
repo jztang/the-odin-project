@@ -1,4 +1,5 @@
 let calcEntry = ""; // expression being entered
+calcEntry = "984+-.02−3.×-654÷984.−-3.14"; updateDisplay();
 
 // flags for making sure operations are correct
 let hasDecimal = false;
@@ -25,24 +26,33 @@ document.querySelector("#button-decimal").addEventListener("click", () => {
 });
 
 // operators
-let operators = ["divide", "multiply", "subtract", "add"];
-let operatorSymbols = ["÷", "×", "−", "+"];
-for (let i = 0; i < operators.length; i++) {
-    document.querySelector(`#button-${operators[i]}`).addEventListener("click", () => {
+const OPERATORS = ["divide", "multiply", "subtract", "add"];
+const OP_SYMBOLS = ["÷", "×", "−", "+", "-"];
+for (let i = 0; i < OPERATORS.length; i++) {
+    document.querySelector(`#button-${OPERATORS[i]}`).addEventListener("click", () => {
         if (isNumber) {
-            calcEntry += operatorSymbols[i];
+            calcEntry += OP_SYMBOLS[i];
             hasDecimal = false;
             isNumber = false;
             isNegative = false;
             updateDisplay();
-        // subtract can also make a number negative
-        } else if (operators[i] === "subtract" && !isNegative) {
+            // subtract can also make a number negative
+        } else if (OPERATORS[i] === "subtract" && !isNegative) {
             calcEntry += "-";
             isNegative = true;
             updateDisplay();
         }
     });
 }
+
+// clear
+document.querySelector("#button-clear").addEventListener("click", () => {
+    calcEntry = "";
+    hasDecimal = false;
+    isNumber = false;
+    isNegative = false;
+    updateDisplay();
+});
 
 // do a calculation based on the operator and two numbers
 function operate(operator, x, y) {
