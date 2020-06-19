@@ -22,10 +22,11 @@ p {
     display: flex;
     align-items: center;
     flex-flow: row-reverse;
+    overflow: hidden;
 }
 
 #display-text {
-    padding: 15px;
+    padding: 5px;
 }
 
 #numbers {
