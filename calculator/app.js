@@ -1,6 +1,6 @@
 let calcEntry = ""; // expression being entered
 // calcEntry = "984+-.02−3.×-654÷984.−-3.14"; updateDisplay();
-calcEntry = "123456789 × 123456789 × 12345678"; updateDisplay();
+calcEntry = "123456789×123456789×12345678"; updateDisplay();
 
 // flags for making sure operations are correct
 let hasDecimal = false;
@@ -89,9 +89,6 @@ document.querySelector("#button-equals").addEventListener("click", () => {
         entryOps.pop();
     }
 
-    // console.log(entryNums);
-    // console.log(entryOps);
-
     // follow order of operations and calculate the result
     for (let i = 0; i < OPERATORS.length; i++) {
         let curOpName = OPERATORS[i];
@@ -113,14 +110,16 @@ document.querySelector("#button-equals").addEventListener("click", () => {
             let result = operate(curOpName, entryNums[index], entryNums[index + 1]);
 
             // fix floating point precision errors
-            result = Math.round(result * 1000000000) / 1000000000;
-            entryNums.splice(index, 2, result);
+            result = Math.round(result * 100000000000) / 100000000000;
 
+            // make sure big numbers (sci. notation) don't overflow display
+            if (result.toString().includes("e")) {
+                result = result.toPrecision(15);
+            }
+
+            entryNums.splice(index, 2, result);
             entryOps.splice(index, 1);
         }
-
-        // console.log(entryNums);
-        // console.log(entryOps);
     }
 
     // display the result, reset some flags
