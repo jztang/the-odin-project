@@ -1,6 +1,6 @@
 let calcEntry = ""; // expression being entered
 // calcEntry = "984+-.02−3.×-654÷984.−-3.14"; updateDisplay();
-calcEntry = "123456789×123456789×12345678"; updateDisplay();
+// calcEntry = "123456789×123456789×12345678"; updateDisplay();
 
 // flags for making sure operations are correct
 let hasDecimal = false;
