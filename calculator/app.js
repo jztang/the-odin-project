@@ -76,12 +76,12 @@ document.querySelector("#button-clear").addEventListener("click", () => {
 // equals
 document.querySelector("#button-equals").addEventListener("click", () => {
     // parse the entry
-    let entryNums = calcEntry.split(/[\÷\×\−\+]/g);
+    let entryNums = calcEntry.split(/[\÷\×\−]|(?<!e)\+/g);
     if (entryNums.length === 1) return;
     for (let i = 0; i < entryNums.length; i++) {
         entryNums[i] = Number(entryNums[i]);
     }
-    let entryOps = calcEntry.match(/[\÷\×\−\+]/g);
+    let entryOps = calcEntry.match(/[\÷\×\−]|(?<!e)\+/g);
 
     // remove trailing operators, if any
     if (!isNumber) {
@@ -124,8 +124,8 @@ document.querySelector("#button-equals").addEventListener("click", () => {
     }
 
     // display the result, reset some flags
-    console.log(entryNums[0]);
     calcEntry = entryNums[0].toString();
+    // console.log(entryNums[0]);
     isNumber = true;
     isResult = true;
     updateDisplay();
