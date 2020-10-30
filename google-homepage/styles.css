@@ -58,9 +58,9 @@ main {
 
 #search-icon {
     width: 13px;
-    position: absolute;
-    top: 155px;
-    left: 367px;
+    position: relative;
+    top: 1px;
+    left: 30px;
 }
 
 footer {
