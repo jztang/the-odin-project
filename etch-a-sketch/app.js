@@ -3,6 +3,9 @@ const newGridBtn = document.querySelector("#new-grid");
 
 // creates a grid of size n x n
 function generateGrid(n) {
+    // make sure max size is 100 x 100
+    if (n > 100) n = 100; 
+
     // clear the grid
     while (container.firstChild) {
         container.removeChild(container.lastChild);
@@ -27,7 +30,7 @@ function generateGrid(n) {
 }
 
 newGridBtn.addEventListener("click", () => {
-    generateGrid(prompt("Enter the width/height for the new grid"));
+    generateGrid(prompt("Enter the width/height for the new grid (max: 100)"));
 });
 
 generateGrid(16);
