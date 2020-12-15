@@ -8,11 +8,9 @@
 }
 
 .book-container {
-  border-style: solid;
-  border-color: black;
-  padding: 10px;
-  border-width: 1px;
+  border: 1px solid black;
   border-radius: 7%;
+  padding: 10px;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -21,9 +19,7 @@
 }
 
 .title, .author, .pages, .read {
-  /* border-style: solid;
-  border-color: green;
-  border-width: 1px; */
+  /* border: 1px solid green; */
   text-align: center;
 }
 
@@ -46,4 +42,65 @@
 .read {
   grid-row: 3 / 4;
   grid-column: 2 / 3;
+}
+
+#new-book-button {
+  padding: 10px;
+  justify-self: center;
+  align-self: center;
+}
+
+#new-book-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#new-book-form {
+  border: 1px solid #888;
+  border-radius: 7px;
+  background-color: white;
+  margin: 10% auto;
+  padding: 25px;
+  padding-top: 10px;
+  width: 200px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-container {
+  /* border: 1px solid red; */
+  margin: 6px;
+}
+
+#input-title {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#new-book-text {
+  font-size: 20px;
+  align-self: center;
+}
+
+#close {
+  color: #aaa;
+  font-size: 30px;
+  font-weight: bold;
+  align-self: flex-end;
+}
+
+#close:hover, #close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

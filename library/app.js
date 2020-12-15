@@ -1,6 +1,9 @@
 const libraryContainer = document.querySelector("#library-container");
 const library = [];
 
+const newBookModal = document.querySelector("#new-book-modal");
+const closeBtn = document.querySelector("#close");
+
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -42,14 +45,31 @@ function displayBooks() {
 
         const readDiv = document.createElement("div");
         readDiv.classList.add("read");
-        if(book.read) {
+        if (book.read) {
             readDiv.textContent = "Read";
         } else {
             readDiv.textContent = "Not read";
         }
         bookDiv.appendChild(readDiv);
     });
+
+    // add "new book" button to the end
+    const newBook = document.createElement("button");
+    newBook.id = "new-book-button";
+    newBook.innerText = "New book";
+    newBook.addEventListener("click", () => {
+        newBookModal.style.display = "block";
+    });
+    libraryContainer.appendChild(newBook);
 }
+
+// close the modal
+closeBtn.addEventListener("click", () => {
+    newBookModal.style.display = "none";
+});
+window.addEventListener("click", (event) => {
+    if (event.target == newBookModal) newBookModal.style.display = "none";
+});
 
 addBookToLibrary("The Fellowship of the Ring", "J. R. R. Tolkien", 423, true);
 addBookToLibrary("Harry Potter and the Sorcerer's Stone", "J. K. Rowling", 309, true);
