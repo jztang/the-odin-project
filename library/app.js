@@ -2,6 +2,7 @@ const libraryContainer = document.querySelector("#library-container");
 const library = [];
 
 const newBookModal = document.querySelector("#new-book-modal");
+const newBookForm = document.querySelector("#new-book-form");
 const closeBtn = document.querySelector("#close");
 
 function Book(title, author, pages, read) {
@@ -63,7 +64,7 @@ function displayBooks() {
     libraryContainer.appendChild(newBook);
 }
 
-// close the modal
+// ways to close the modal
 closeBtn.addEventListener("click", () => {
     newBookModal.style.display = "none";
 });
@@ -71,11 +72,30 @@ window.addEventListener("click", (event) => {
     if (event.target == newBookModal) newBookModal.style.display = "none";
 });
 
+// new book form submission
+newBookForm.addEventListener("submit", (event) => {
+    event.preventDefault(); // prevent default form submit
+
+    // add new book to library
+    let newTitle = document.querySelector("#new-title").value;
+    let newAuthor = document.querySelector("#new-author").value;
+    let newPages = document.querySelector("#new-pages").value;
+    let newReadStatus = (document.querySelector("input:checked").value === "read") ? true : false;
+    addBookToLibrary(newTitle, newAuthor, newPages, newReadStatus);
+
+    // refresh the library to include the new book
+    newBookForm.reset();
+    newBookModal.style.display = "none";
+    displayBooks();
+
+});
+
+// example books
 addBookToLibrary("The Fellowship of the Ring", "J. R. R. Tolkien", 423, true);
 addBookToLibrary("Harry Potter and the Sorcerer's Stone", "J. K. Rowling", 309, true);
 addBookToLibrary("1984", "George Orwell", 328, false);
 addBookToLibrary("Brave New World", "Aldous Huxley", 311, false);
-addBookToLibrary("The Fellowship of the Ring", "J. R. R. Tolkien", 423, true);
-addBookToLibrary("Harry Potter and the Sorcerer's Stone", "J. K. Rowling", 309, true);
+addBookToLibrary("The Handmaid's Taile", "Margaret Atwood", 311, true);
+addBookToLibrary("Catch-22", "Joseph Heller", 453, false);
 
 displayBooks();

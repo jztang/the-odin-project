@@ -10,34 +10,36 @@
 <body>
   <div id="library-container"></div>
   <div id="new-book-modal">
-    <form id="new-book-form" action="">
+    <form id="new-book-form">
       <div id="input-title" class="input-container">
         <p id="close">&times;</p>
         <p id="new-book-text">New Book</p>
       </div>
       <div class="input-container">
         <label for="new-title">Title</label><br>
-        <input type="text" id="new-title" name="title"><br>
+        <input type="text" id="new-title" name="title" required><br>
       </div>
 
       <div class="input-container">
         <label for="new-author">Author</label><br>
-        <input type="text" id="new-author" name="author"><br>
+        <input type="text" id="new-author" name="author" required><br>
       </div>
 
       <div class="input-container">
         <label for="new-pages">Pages</label><br>
-        <input type="number" id="new-pages" name="pages" min="0"><br>
+        <input type="number" id="new-pages" name="pages" min="0" required><br>
       </div>
 
       <div class="input-container">
-        <input type="radio" id="new-read" name="read-status" value="read">
+        <input type="radio" id="new-read" name="read-status" value="read" required>
         <label for="new-read">Read</label>
-        <input type="radio" id="new-unread" name="read-status" value="unread">
+        <input type="radio" id="new-unread" name="read-status" value="unread" required>
         <label for="new-unread">Unread</label><br>
       </div>
 
-      <div class="input-container"><input type="submit" value="Add book"></div>
+      <div class="input-container">
+        <input type="submit" id="add-book" value="Add book">
+      </div>
     </form>
   </div>
 </body>
