@@ -24,10 +24,16 @@ function displayBooks() {
     }
 
     // display each book
-    library.forEach(book => {
+    library.forEach((book, index) => {
         const bookDiv = document.createElement("div");
         bookDiv.classList.add("book-container");
         libraryContainer.appendChild(bookDiv);
+
+        const removeDiv = document.createElement("div");
+        removeDiv.classList.add("remove");
+        removeDiv.textContent = "×";
+        removeDiv.addEventListener("click", removeBook.bind(null, index));
+        bookDiv.appendChild(removeDiv);
 
         const titleDiv = document.createElement("div");
         titleDiv.classList.add("title");
@@ -64,6 +70,12 @@ function displayBooks() {
     libraryContainer.appendChild(newBook);
 }
 
+// remove book from library
+function removeBook(index) {
+    library.splice(index, 1);
+    displayBooks();
+}
+
 // ways to close the modal
 closeBtn.addEventListener("click", () => {
     newBookModal.style.display = "none";
@@ -95,7 +107,7 @@ addBookToLibrary("The Fellowship of the Ring", "J. R. R. Tolkien", 423, true);
 addBookToLibrary("Harry Potter and the Sorcerer's Stone", "J. K. Rowling", 309, true);
 addBookToLibrary("1984", "George Orwell", 328, false);
 addBookToLibrary("Brave New World", "Aldous Huxley", 311, false);
-addBookToLibrary("The Handmaid's Taile", "Margaret Atwood", 311, true);
+addBookToLibrary("The Handmaid's Tale", "Margaret Atwood", 311, true);
 addBookToLibrary("Catch-22", "Joseph Heller", 453, false);
 
 displayBooks();
