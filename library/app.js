@@ -52,11 +52,8 @@ function displayBooks() {
 
         const readDiv = document.createElement("div");
         readDiv.classList.add("read");
-        if (book.read) {
-            readDiv.textContent = "Read";
-        } else {
-            readDiv.textContent = "Not read";
-        }
+        readDiv.textContent = book.read ? "Read" : "Not read";
+        readDiv.addEventListener("click", toggleBook.bind(null, book, readDiv));
         bookDiv.appendChild(readDiv);
     });
 
@@ -74,6 +71,12 @@ function displayBooks() {
 function removeBook(index) {
     library.splice(index, 1);
     displayBooks();
+}
+
+// toggle book read status
+function toggleBook(book, readDiv) {
+    book.read = !book.read;
+    readDiv.textContent = book.read ? "Read" : "Not read";
 }
 
 // ways to close the modal

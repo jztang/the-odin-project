@@ -58,6 +58,14 @@
 .read {
   grid-row: 4 / 5;
   grid-column: 2 / 3;
+  padding: 5px;
+}
+
+.read:hover, .read:focus {
+  border: 1px solid black;
+  border-radius: 7%;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 #new-book-button {
