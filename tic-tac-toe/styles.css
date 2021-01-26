@@ -1,0 +1,30 @@
+body {
+  background-color: rgb(48, 48, 48);
+}
+
+#game-board {
+  background-color: rgb(114, 114, 114);
+  height: 500px;
+  width: 500px;
+  margin: auto;
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+
+  display: grid;
+  grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+  justify-content: center;
+  align-content: center;
+}
+
+.square {
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  font-family: "Hachi Maru Pop", cursive;
+  font-size: 80px;
+
+  text-align: center;
+  vertical-align: middle;
+  line-height: 140px;
+}
