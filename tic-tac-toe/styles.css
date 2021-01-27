@@ -28,3 +28,8 @@ body {
   vertical-align: middle;
   line-height: 140px;
 }
+
+.open:hover {
+  background-color: rgb(170, 170, 170);
+  cursor: pointer;
+}
