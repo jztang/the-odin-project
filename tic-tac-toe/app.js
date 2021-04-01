@@ -1,6 +1,5 @@
 const gameBoard = (() => {
     let board = new Array(9);
-    // board = ["X", "O", "X", "", "", "", "O", "X", "O"];
     const getBoard = () => board;
     const setSquare = (index, marker) => { board[index] = marker; }
     const resetBoard = () => { board = new Array(9); }
@@ -10,7 +9,9 @@ const gameBoard = (() => {
 
 const displayController = (() => {
     const squares = document.querySelector("#game-board").children;
-    
+
+    const getSquares = () => squares;
+
     const updateBoard = () => {
         const board = gameBoard.getBoard();
         for (let i = 0; i < squares.length; i++) {
@@ -18,33 +19,33 @@ const displayController = (() => {
         }
     }
 
-    const resetBoard = () => {
+    const setUpBoard = () => {
         for (let i = 0; i < squares.length; i++) {
-            const curSquare = squares[i];
-            if (!curSquare.classList.contains("open")) {
-                curSquare.textContent = undefined;
-                curSquare.classList.add("open");
-                curSquare.addEventListener("click", () => {
-                    gameController.playerMove(i);
-                });
-            }
+            squares[i].classList.add("open");
+            squares[i].addEventListener("click", gameController.playerMove);
         }
+        console.log("First time setup done");
     }
-    
-    return { updateBoard, resetBoard }
+
+    return { getSquares, updateBoard, setUpBoard }
 })();
 
 const gameController = (() => {
     let xToMove = true;
 
-    const playerMove = index => {
-        const moveMarker = xToMove ? "X" : "O";
-        gameBoard.setSquare(index, moveMarker);
-        xToMove = !xToMove;
-        displayController.updateBoard();
+    const playerMove = event => {
+        if (event.target.classList.contains("open")) {
+            const index = event.target.id;
+            const moveMarker = xToMove ? "X" : "O";
+            gameBoard.setSquare(index, moveMarker);
+            xToMove = !xToMove;
+            displayController.getSquares()[index].classList.remove("open");
+            displayController.updateBoard();
+            console.log(`${moveMarker} plays at square ${index}`);
+        }
     }
 
     return { playerMove };
 })();
 
-displayController.resetBoard();
+displayController.setUpBoard();
