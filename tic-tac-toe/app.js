@@ -24,10 +24,15 @@ const displayController = (() => {
             squares[i].classList.add("open");
             squares[i].addEventListener("click", gameController.playerMove);
         }
+        setInfoText("X to move");
         console.log("First time setup done");
     }
 
-    return { getSquares, updateBoard, setUpBoard }
+    const setInfoText = text => {
+        document.querySelector("#info-text").textContent = text;
+    }
+
+    return { getSquares, updateBoard, setUpBoard, setInfoText }
 })();
 
 const gameController = (() => {
@@ -36,11 +41,21 @@ const gameController = (() => {
     const playerMove = event => {
         if (event.target.classList.contains("open")) {
             const index = event.target.id;
-            const moveMarker = xToMove ? "X" : "O";
+            let moveMarker, infoText;
+
+            if (xToMove) {
+                moveMarker = "X";
+                infoText = "O to move";
+            } else {
+                moveMarker = "O";
+                infoText = "X to move";
+            }
+
             gameBoard.setSquare(index, moveMarker);
-            xToMove = !xToMove;
+            displayController.setInfoText(infoText);
             displayController.getSquares()[index].classList.remove("open");
             displayController.updateBoard();
+            xToMove = !xToMove;
             console.log(`${moveMarker} plays at square ${index}`);
         }
     }

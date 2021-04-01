@@ -33,3 +33,10 @@ body {
   background-color: rgb(170, 170, 170);
   cursor: pointer;
 }
+
+#info-text {
+  text-align: center;
+  margin: 20px;
+  font-size: 20px;
+  color: white;
+}
