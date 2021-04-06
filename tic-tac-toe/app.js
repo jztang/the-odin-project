@@ -36,13 +36,14 @@ const displayController = (() => {
         if (indices) {
             setInfoText(`${marker} wins!`);
             console.log(`Game over - ${marker} got 3-in-a-row: ${indices}`);
+
+            for (let i = 0; i < squares.length; i++) {
+                squares[i].classList.remove("open");
+                if (indices.includes(i)) { squares[i].classList.add("highlight") }
+            }
         } else {
             setInfoText("It's a tie!");
             console.log("Game over - tie");
-        }
-
-        for (let i = 0; i < squares.length; i++) {
-            squares[i].classList.remove("open");
         }
     }
 

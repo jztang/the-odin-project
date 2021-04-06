@@ -34,6 +34,10 @@ body {
   cursor: pointer;
 }
 
+.highlight {
+  background-color: rgb(190, 190, 190);
+}
+
 #info-text {
   text-align: center;
   margin: 20px;
