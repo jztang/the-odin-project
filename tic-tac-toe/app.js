@@ -55,7 +55,7 @@ const gameController = (() => {
 
     const playerMove = event => {
         if (event.target.classList.contains("open")) {
-            const index = event.target.id;
+            const index = event.target.getAttribute("data-index");
             let moveMarker, infoText;
 
             if (xToMove) {
