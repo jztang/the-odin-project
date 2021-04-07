@@ -25,3 +25,7 @@ This repository stores all of my projects for [The Odin Project](https://www.the
 - A library that allows the user to keep track of their books
 - Supports adding and removing books from the library
 - The user is able to toggle whether or not a book has been read
+
+[Tic Tac Toe](https://jztang.github.io/the-odin-project/tic-tac-toe/)
+- The classic game of Tic Tac Toe, in a simple and clean interface
+- Recognizes win/tie states in the game, and allows for easy restarting
