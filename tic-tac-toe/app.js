@@ -29,7 +29,21 @@ const displayController = (() => {
             squares[i].addEventListener("click", gameController.playerMove);
         }
         setInfoText("X to move");
+        document.querySelector("#restart-btn").addEventListener("click", resetBoard);
         console.log("First time setup done");
+    }
+
+    const resetBoard = () => {
+        gameBoard.resetBoard();
+        for (let i = 0; i < squares.length; i++) {
+            squares[i].classList.add("open");
+            squares[i].classList.remove("highlight");
+        }
+        updateBoard();
+        setInfoText("X to move");
+        gameController.resetGame();
+        document.querySelector("#restart-container").style.display = "none";
+        console.log("--- NEW GAME ---");
     }
 
     const endGame = (indices, marker) => {
@@ -45,6 +59,8 @@ const displayController = (() => {
             setInfoText("It's a tie!");
             console.log("Game over - tie");
         }
+
+        document.querySelector("#restart-container").style.display = "block";
     }
 
     return { getSquares, updateBoard, setInfoText, setUpBoard, endGame }
@@ -53,6 +69,11 @@ const displayController = (() => {
 const gameController = (() => {
     let xToMove = true;
     let movesMade = 0;
+
+    const resetGame = () => {
+        xToMove = true;
+        movesMade = 0;
+    }
 
     const playerMove = event => {
         if (event.target.classList.contains("open")) {
@@ -124,7 +145,7 @@ const gameController = (() => {
         return false;
     }
 
-    return { playerMove, checkForWin };
+    return { resetGame, playerMove, checkForWin };
 })();
 
 displayController.setUpBoard();
