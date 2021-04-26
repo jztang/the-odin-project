@@ -27,12 +27,12 @@ li.crumb {
   display: inline-block;
 }
 
-li.crumb a {
-  color: #f4f2f3;
-  text-decoration: none;
+li.crumb a:hover {
+  color: #F9A03F;
+  cursor: pointer;
 }
 
-li.crumb a:hover {
+.yellow {
   color: #F9A03F;
 }
 
