@@ -17,6 +17,28 @@ const clearNavColor = () => {
     }
 }
 
+const createMenuItem = (name, description, price) => {
+    const menuItem = document.createElement("div");
+    menuItem.classList.add("menu-item");
+
+    const itemName = document.createElement("div");
+    itemName.classList.add("item-name");
+    itemName.textContent = name;
+    menuItem.appendChild(itemName);
+
+    const itemDesc = document.createElement("div");
+    itemDesc.classList.add("item-desc");
+    itemDesc.textContent = description;
+    menuItem.appendChild(itemDesc);
+
+    const itemPrice = document.createElement("div");
+    itemPrice.classList.add("item-price");
+    itemPrice.textContent = price;
+    menuItem.appendChild(itemPrice);
+
+    return menuItem;
+}
+
 const loadAbout = () => {
     clearNavColor();
     document.querySelector("#tab-about a").classList.add("yellow");
@@ -55,6 +77,47 @@ const loadMenu = () => {
 
     const contentMenu = document.createElement("div");
     contentMenu.id = "content-menu";
+
+    const ramenTitle = document.createElement("div");
+    ramenTitle.classList.add("menu-title");
+    ramenTitle.textContent = "- RAMEN -";
+    contentMenu.appendChild(ramenTitle);
+
+    const ramenMenu = document.createElement("div");
+    ramenMenu.classList.add("sub-menu");
+    ramenMenu.appendChild(createMenuItem("TONKOTSU RAMEN", "Pork bone broth, " + 
+        "shio tare, fatty pork belly, marinated egg, pickled shiitake, black " + 
+        "garlic oil, scallion", "14"));
+    ramenMenu.appendChild(createMenuItem("SPICY MISO RAMEN", "Pork bone broth, " + 
+        "chili-miso tare, crispy pork belly, marinated bean sprouts, menma, " + 
+        "chili oil, scallion", "15"));
+    ramenMenu.appendChild(createMenuItem("SHIO RAMEN", "Chicken-dashi broth, " + 
+        "shio tare, yuzu grilled chicken, marinated egg, fried shallot, chicken " + 
+        "fat, katsuobushi, yuzu kosho, scallion", "14"));
+    ramenMenu.appendChild(createMenuItem("SHOYU RAMEN", "Chicken-dashi broth, " + 
+        "roasted shoyu tare, fatty pork belly, marinated egg, menma, chicken " + 
+        "fat, katsuobushi, scallion, sesame seed", "14"));
+    ramenMenu.appendChild(createMenuItem("VEGGIE MISO RAMEN", "Shiitake dashi, " + 
+        "miso tare, grilled corn, pickled shiitake, seasonal vegetables, " + 
+        "scallion", "12"));
+    ramenMenu.appendChild(createMenuItem("KID'S RAMEN", "Choice of broth: pork " + 
+        "bone, chicken-shio, chicken-shoyu, miso, or spicy miso", "8"));
+    contentMenu.appendChild(ramenMenu);
+
+    const drinkTitle = document.createElement("div");
+    drinkTitle.classList.add("menu-title");
+    drinkTitle.textContent = "- DRINKS -";
+    contentMenu.appendChild(drinkTitle);
+
+    const drinkMenu = document.createElement("div");
+    drinkMenu.classList.add("sub-menu");
+    drinkMenu.appendChild(createMenuItem("LYCHEE MARTINI", "Wodka Vodka, " + 
+        "St. Elder, lychee syrup, lychee popping boba", "8"));
+    drinkMenu.appendChild(createMenuItem("KYOTO MULE", "Japanese shochu, lime, " + 
+        "lychee syrup, Fever Tree ginger beer", "10"));
+    drinkMenu.appendChild(createMenuItem("TOKI OLD FASHIONED", "Suntory Toki " + 
+        "Japanese whiskey, ginger, lemon bitters", "10"));
+    contentMenu.appendChild(drinkMenu);
 
     content.appendChild(contentMenu);
     document.querySelector("#container").appendChild(content);

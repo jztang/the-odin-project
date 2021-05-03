@@ -81,9 +81,26 @@ li.crumb a:hover {
   line-height: 120%;
 }
 
-/* border highlights */
-/* #header { border: red solid 1px; } */
-/* .title { border:orange solid 1px; } */
-/* #nav-bar {border: purple solid 1px; } */
-/* #container {border: blue solid 1px; } */
-/* #content { border:green solid 1px; } */
+#content-menu .menu-title {
+  font-family: "Nothing You Could Do", cursive;
+  font-size: 20px;
+  text-align: center;
+  margin: 40px;
+}
+
+#content-menu .sub-menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 60px;
+}
+
+#content-menu .menu-item {
+  display: grid;
+  grid-template-columns: 1fr 10%;
+  grid-template-rows: 30% 70%;
+  grid-auto-flow: column;
+}
+
+#content-menu .item-price {
+  text-align: right;
+}
