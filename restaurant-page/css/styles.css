@@ -97,7 +97,7 @@ li.crumb a:hover {
 #content-menu .menu-item {
   display: grid;
   grid-template-columns: 1fr 10%;
-  grid-template-rows: 30% 70%;
+  grid-template-rows: 30px 1fr;
   grid-auto-flow: column;
 }
 
