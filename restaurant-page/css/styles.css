@@ -104,3 +104,25 @@ li.crumb a:hover {
 #content-menu .item-price {
   text-align: right;
 }
+
+#content-contact {
+  display: flex;
+  justify-content: space-around;
+}
+
+#content-contact #contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#content-contact .contact-section-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#content-contact .contact-section-desc {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
