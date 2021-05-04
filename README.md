@@ -29,3 +29,7 @@ This repository stores all of my projects for [The Odin Project](https://www.the
 [Tic Tac Toe](https://jztang.github.io/the-odin-project/tic-tac-toe/)
 - The classic game of Tic Tac Toe, in a simple and clean interface
 - Recognizes win/tie states in the game, and allows for easy restarting
+
+[Restaurant Page](https://jztang.github.io/the-odin-project/restaurant-page/dist/)
+- A mockup website for a fictional ramen restaurant
+- Includes tabs for about, menu, and contact info
