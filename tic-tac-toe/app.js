@@ -107,6 +107,7 @@ const gameController = (() => {
         const rowIndices = [rowStart, rowStart + 1, rowStart + 2];
         if (checkSquares(rowIndices, moveMarker, board)) {
             displayController.endGame(rowIndices, moveMarker);
+            return;
         }
 
         // check vertical
@@ -114,18 +115,21 @@ const gameController = (() => {
         const colIndices = [colStart, colStart + 3, colStart + 6];
         if (checkSquares(colIndices, moveMarker, board)) {
             displayController.endGame(colIndices, moveMarker);
+            return;
         }
 
         // check main diagonal
         const mainDiaIndices = [0, 4, 8];
         if (checkSquares(mainDiaIndices, moveMarker, board)) {
             displayController.endGame(mainDiaIndices, moveMarker);
+            return;
         }
 
         // check anti diagonal
         const antiDiaIndices = [2, 4, 6];
         if (checkSquares(antiDiaIndices, moveMarker, board)) {
             displayController.endGame(antiDiaIndices, moveMarker);
+            return;
         }
 
         // check for tie
