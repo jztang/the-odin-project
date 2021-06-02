@@ -21,7 +21,7 @@ header {
 }
 
 #new-btns {
-  width: 420px;
+  width: 370px;
 
   display: flex;
   justify-content: space-between;
@@ -34,7 +34,7 @@ button {
   background-color: #e63946;
   border: none;
   color: #f1faee;
-  width: 200px;
+  width: 170px;
   padding: 10px;
   cursor: pointer;
 }
@@ -48,7 +48,8 @@ button span::after {
   position: absolute;
   content: url(../img/circle-plus.svg);
   opacity: 0;
-  right: -25px;
+  right: -30px;
+  top: -1px;
   transition: 0.5s;
 }
 
