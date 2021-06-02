@@ -1,0 +1,66 @@
+body {
+  background-color: #f1faee;
+}
+
+header {
+  background-color: #1d3557;
+  color: #f1faee;
+  height: 70px;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logo {
+  width: 185px;
+  font-family: "KoHo", sans-serif;
+  font-size: 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#new-btns {
+  width: 420px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  font-family: "Koho", sans-serif;
+  font-size: 17.5px;
+  border-radius: 5px;
+  background-color: #e63946;
+  border: none;
+  color: #f1faee;
+  width: 200px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+button span {
+  position: relative;
+  transition: 0.5s;
+}
+
+button span::after {
+  position: absolute;
+  content: url(../img/circle-plus.svg);
+  opacity: 0;
+  right: -25px;
+  transition: 0.5s;
+}
+
+button:hover span {
+  padding-right: 30px;
+}
+
+button:hover span::after {
+  opacity: 1;
+  right: 0;
+}
