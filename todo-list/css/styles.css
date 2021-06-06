@@ -64,6 +64,8 @@ header {
   right: 0;
 }
 
+/*** MAIN PAGE ***/
+
 #content-container {
   min-height: calc(100vh - 70px);
 
@@ -111,7 +113,7 @@ nav {
   cursor: pointer;
 }
 
-.task-section h1 {
+.task-section h2 {
   font-family: "Koho", sans-serif;
   font-size: 25px;
   margin: 10px;
