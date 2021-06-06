@@ -1,3 +1,5 @@
+/*** HEADER ***/
+
 header {
   background-color: #1d3557;
   color: #f1faee;
@@ -27,7 +29,7 @@ header {
   justify-content: space-between;
 }
 
-button {
+#new-btns button {
   font-family: "Koho", sans-serif;
   font-size: 17.5px;
   border-radius: 5px;
@@ -39,12 +41,12 @@ button {
   cursor: pointer;
 }
 
-button span {
+#new-btns button span {
   position: relative;
   transition: 0.5s;
 }
 
-button span::after {
+#new-btns button span::after {
   position: absolute;
   content: url(../img/circle-plus.svg);
   opacity: 0;
@@ -53,11 +55,11 @@ button span::after {
   transition: 0.5s;
 }
 
-button:hover span {
+#new-btns button:hover span {
   padding-right: 30px;
 }
 
-button:hover span::after {
+#new-btns button:hover span::after {
   opacity: 1;
   right: 0;
 }
@@ -68,11 +70,49 @@ button:hover span::after {
   display: flex;
 }
 
+/*** NAV BAR ***/
+
 nav {
   min-height: 100%;
   width: 300px;
   background-color: #a8dadc;
+
+  display: flex;
+  flex-direction: column;
 }
+
+.task-section {
+  /* border: solid black 1px; */
+  /* background-color: yellow; */
+  margin: 15px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.task-section button {
+  background-color: #A8DADC;
+  border: none;
+  border-radius: 5px;
+  font-family: "Krub", sans-serif;
+  font-size: 20px;
+  margin: 5px;
+  display: flex;
+}
+
+.task-section button svg,
+.task-section button span {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px;
+}
+
+.task-section button:hover {
+  background-color: #8aced0;
+  cursor: pointer;
+}
+
+/*** MAIN CONTENT ***/
 
 main {
   min-height: 100%;
