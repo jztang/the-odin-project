@@ -83,7 +83,6 @@ nav {
 
 .task-section {
   /* border: solid black 1px; */
-  /* background-color: yellow; */
   margin: 15px;
 
   display: flex;
@@ -110,6 +109,12 @@ nav {
 .task-section button:hover {
   background-color: #8aced0;
   cursor: pointer;
+}
+
+.task-section h1 {
+  font-family: "Koho", sans-serif;
+  font-size: 25px;
+  margin: 10px;
 }
 
 /*** MAIN CONTENT ***/
