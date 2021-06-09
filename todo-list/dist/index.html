@@ -81,8 +81,10 @@
       <div id="projects" class="task-section">
         <h2>Projects</h2>
         <button>
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list-check" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list-check" width="25" height="25"
+            viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M3.5 5.5l1.5 1.5l2.5 -2.5" />
             <path d="M3.5 11.5l1.5 1.5l2.5 -2.5" />
             <path d="M3.5 17.5l1.5 1.5l2.5 -2.5" />
@@ -96,7 +98,19 @@
     </nav>
 
     <main>
-      <div></div>
+      <div id="cur-project-container">
+        <div id="project-header">
+          <h1 id="cur-project-name">Groceries</h1>
+          <div id="sort-by">
+            <label for="sort-select">Sort by:</label>
+            <select name="sort" id="sort-select">
+              <option value="due-date">Due date</option>
+              <option value="priority">Priority</option>
+              <option value="alphabetical">Alphabetical</option>
+            </select>
+          </div>
+        </div>
+      </div>
     </main>
   </div>
 </body>

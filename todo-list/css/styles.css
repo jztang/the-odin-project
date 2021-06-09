@@ -125,4 +125,34 @@ main {
   min-height: 100%;
   width: calc(100vw - 300px);
   background-color: #f1faee;
+  display: flex;
+  justify-content: center;
+}
+
+#cur-project-container {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+#project-header {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#cur-project-name {
+  font-family: "Koho", sans-serif;
+  font-size: 30px;
+}
+
+#sort-by {
+  font-family: "Krub", sans-serif;
+  font-size: 15px;
+  padding-top: 7.5px;
+  padding-bottom: 7.5px;
+}
+
+main h1, main div {
+  /* border: solid black 1px; */
 }
