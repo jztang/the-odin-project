@@ -136,7 +136,7 @@ main {
 }
 
 #project-header {
-  margin: 10px;
+  margin: 20px;
   display: flex;
   justify-content: space-between;
 }
@@ -149,10 +149,69 @@ main {
 #sort-by {
   font-family: "Krub", sans-serif;
   font-size: 15px;
-  padding-top: 7.5px;
-  padding-bottom: 7.5px;
+
+  display: flex;
+  align-items: center;
 }
 
-main h1, main div {
+#sort-by label {
+  margin-right: 5px;
+}
+
+.task {
+  font-family: "Krub", sans-serif;
+  font-size: 20px;
+  margin: 10px 25px 0px 25px;
+
+  display: flex;
+  align-items: center;
+}
+
+.task-check {
+  height: 35px;
+  width: 35px;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-check:hover img {
+  content: url(../img/circle-check-p4.svg);
+}
+
+.task-name {
+  flex: 1;
+}
+
+.task-due-date {
+  flex-basis: 20%;
+}
+
+.task-name, .task-due-date {
+  margin: 7px;
+}
+
+.task-edit, .task-delete {
+  height: 30px;
+  width: 30px;
+  border: none;
+  border-radius: 5px;
+  background: none;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-edit:hover, .task-delete:hover {
+  background: #d8f1d0;
+}
+
+main * {
   /* border: solid black 1px; */
 }
