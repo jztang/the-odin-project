@@ -83,7 +83,7 @@ nav {
   flex-direction: column;
 }
 
-.task-section {
+.project-section {
   /* border: solid black 1px; */
   margin: 15px;
 
@@ -91,7 +91,7 @@ nav {
   flex-direction: column;
 }
 
-.task-section button {
+.project-section button {
   background-color: #A8DADC;
   border: none;
   border-radius: 5px;
@@ -101,19 +101,19 @@ nav {
   display: flex;
 }
 
-.task-section button svg,
-.task-section button span {
+.project-section button svg,
+.project-section button span {
   display: inline-block;
   vertical-align: middle;
   margin: 5px;
 }
 
-.task-section button:hover {
+.project-section button:hover {
   background-color: #8aced0;
   cursor: pointer;
 }
 
-.task-section h2 {
+.project-section h2 {
   font-family: "Koho", sans-serif;
   font-size: 25px;
   margin: 10px;
@@ -135,7 +135,7 @@ main {
   flex-direction: column;
 }
 
-#project-header {
+#cur-project-header {
   margin: 20px;
   display: flex;
   justify-content: space-between;
