@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
  * @param {number} priority - The priority level of the task (1-4).
  * @param {string} dueDate - The due date of the task.
  * @param {string} project - The project this task belongs to.
- * @returns 
+ * @returns - A task object.
  */
 const taskFactory = (name, priority, dueDate, project) => {
     const id = uuidv4();
