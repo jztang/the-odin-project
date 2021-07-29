@@ -9,11 +9,11 @@ function getDateFromToday(numDays) {
     const today = new Date();
     let date;
 
-    if (numDays > 0) { // Get date in the future
+    if (numDays > 0) {         // Get date in the future
         date = add(today, {days: numDays});
     } else if (numDays == 0) { // Get today 
         date = today;
-    } else { // Get date in the past
+    } else {                   // Get date in the past
         date = sub(today, {days: Math.abs(numDays)});
     }
 
