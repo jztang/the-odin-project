@@ -1,5 +1,5 @@
-let tasks = JSON.parse(localStorage.getItem("tasks"));
-if (tasks === null) tasks = [];
+import { firstLoad } from "./storageManager";
+import { displayTasks } from "./display";
 
-let userProjects = JSON.parse(localStorage.getItem("userProjects"));
-if (userProjects === null) userProjects = [];
+firstLoad();
+displayTasks();

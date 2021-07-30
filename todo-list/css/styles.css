@@ -179,7 +179,19 @@ main {
   align-items: center;
 }
 
-.task-check:hover img {
+.task-check:hover[data-priority="1"] img {
+  content: url(../img/circle-check-p1.svg);
+}
+
+.task-check:hover[data-priority="2"] img {
+  content: url(../img/circle-check-p2.svg);
+}
+
+.task-check:hover[data-priority="3"] img {
+  content: url(../img/circle-check-p3.svg);
+}
+
+.task-check:hover[data-priority="4"] img {
   content: url(../img/circle-check-p4.svg);
 }
 
