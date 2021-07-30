@@ -1,4 +1,4 @@
-import { add, sub, format } from "date-fns";
+import { add, sub, format, parseISO, differenceInCalendarDays } from "date-fns";
 
 /**
  * Get the date, numDays relative to today.
@@ -18,10 +18,32 @@ function getDateFromToday(numDays) {
     }
 
     const formattedDate = format(date, "yyyy-MM-dd");
-
     return formattedDate;
+}
+
+function getRelativeDate(taskDueDate) {
+    if (taskDueDate === "") return "";
+    const today = new Date();
+    const diff = differenceInCalendarDays(parseISO(taskDueDate), today);
+
+    if (diff < -1) {
+        return format(parseISO(taskDueDate), "MMM d");
+    } else if (diff === -1) {
+        return "Yesterday";
+    } else if (diff === 0) {
+        return "Today";
+    } else if (diff === 1) {
+        return "Tomorrow";
+    } else if (diff > 1 && diff <= 7) {
+        return format(parseISO(taskDueDate), "EEEE");
+    } else if (diff > 7 && diff < 365) {
+        return format(parseISO(taskDueDate), "MMM d");
+    } else {
+        return format(parseISO(taskDueDate), "MMM d y");
+    }
 }
 
 export {
     getDateFromToday,
+    getRelativeDate,
 }
