@@ -15,6 +15,7 @@ function generateTasks() {
     tasks.push(taskFactory("Vacation", 2, getDateFromToday(400), "Inbox"));
 
     // School (user project)
+    tasks.push(taskFactory("Study for exam", 4, getDateFromToday(10), "School"));
     tasks.push(taskFactory("Math problems", 2, getDateFromToday(-1), "School"));
     tasks.push(taskFactory("History reading", 3, getDateFromToday(1), "School"));
     tasks.push(taskFactory("Final presentation", 1, getDateFromToday(40), "School"));
