@@ -1,8 +1,12 @@
 import { getTasks, getUserProjects } from "./storageManager";
 import { getRelativeDate, isLate } from "./date";
 
-function displayTasks() {
-    const tasks = getTasks();
+function displayTasks(sort) {
+    let tasks;
+    if (sort === "Due date") {
+        tasks = getTasks().sort(compareDueDate);
+    }
+
     const containerDiv = document.querySelector("#cur-project-container");
 
     for (const task of tasks) {
@@ -36,6 +40,16 @@ function displayTasks() {
         taskDiv.appendChild(taskEdit);
 
         containerDiv.appendChild(taskDiv);
+    }
+}
+
+function compareDueDate(a, b) {
+    if (a.dueDate < b.dueDate && a.dueDate !== "") {
+        return -1;
+    } else if (a.dueDate > b.dueDate || a.dueDate === "") {
+        return 1;
+    } else {
+        return 0;
     }
 }
 
