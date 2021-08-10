@@ -1,4 +1,4 @@
-import { getTasks } from "./storageManager";
+import { getTasks, getUserProjects } from "./storageManager";
 import { getRelativeDate, isLate } from "./date";
 
 function displayTasks() {
@@ -31,7 +31,7 @@ function displayTasks() {
         const taskEdit = document.createElement("button");
         taskEdit.classList.add("task-edit");
         const editImg = document.createElement("img");
-        editImg.src= "../img/pencil.svg";
+        editImg.src = "../img/pencil.svg";
         taskEdit.appendChild(editImg);
         taskDiv.appendChild(taskEdit);
 
@@ -39,6 +39,26 @@ function displayTasks() {
     }
 }
 
+function displayUserProjects() {
+    const userProjects = getUserProjects();
+    const containerDiv = document.querySelector("#user-projects");
+
+    for (const proj of userProjects) {
+        const projBtn = document.createElement("button");
+
+        const projIcon = document.createElement("img");
+        projIcon.src = "../img/list-check.svg";
+        projBtn.appendChild(projIcon);
+
+        const projName = document.createElement("span");
+        projName.textContent = proj;
+        projBtn.appendChild(projName);
+
+        containerDiv.appendChild(projBtn);
+    }
+}
+
 export {
     displayTasks,
+    displayUserProjects,
 }

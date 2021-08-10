@@ -1,5 +1,6 @@
 import { firstLoad } from "./storageManager";
-import { displayTasks } from "./display";
+import { displayTasks, displayUserProjects } from "./display";
 
 firstLoad();
 displayTasks();
+displayUserProjects();
