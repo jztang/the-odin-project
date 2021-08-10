@@ -101,6 +101,7 @@ nav {
   display: flex;
 }
 
+.project-section button svg,
 .project-section button img,
 .project-section button span {
   display: inline-block;
