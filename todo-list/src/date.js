@@ -43,7 +43,16 @@ function getRelativeDate(taskDueDate) {
     }
 }
 
+function isLate(taskDueDate) {
+    const today = new Date();
+    const diff = differenceInCalendarDays(parseISO(taskDueDate), today);
+
+    if (diff < 0) return true;
+    else return false;
+}
+
 export {
     getDateFromToday,
     getRelativeDate,
+    isLate,
 }

@@ -1,5 +1,5 @@
 import { getTasks } from "./storageManager";
-import { getRelativeDate } from "./date";
+import { getRelativeDate, isLate } from "./date";
 
 function displayTasks() {
     const tasks = getTasks();
@@ -25,6 +25,7 @@ function displayTasks() {
         const taskDueDate = document.createElement("time");
         taskDueDate.classList.add("task-due-date");
         taskDueDate.textContent = getRelativeDate(task.dueDate);
+        if (isLate(task.dueDate)) taskDueDate.classList.add("late");
         taskDiv.appendChild(taskDueDate);
 
         const taskEdit = document.createElement("button");

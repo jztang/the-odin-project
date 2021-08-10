@@ -207,6 +207,10 @@ main {
   margin: 7px;
 }
 
+.task-due-date.late {
+  color: #E63946;
+}
+
 .task-edit, .task-delete {
   height: 30px;
   width: 30px;
