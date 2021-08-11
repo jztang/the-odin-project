@@ -186,9 +186,14 @@ main {
   font-family: "Krub", sans-serif;
   font-size: 20px;
   margin: 10px 25px 0px 25px;
+  border-radius: 5px;
 
   display: flex;
   align-items: center;
+}
+
+.task:hover {
+  background: #d8f1d0;
 }
 
 .task-check {
@@ -254,7 +259,6 @@ main {
 }
 
 .task-edit:hover img {
-  /* background: #d8f1d0; */
   filter: brightness(0) saturate(100%);
 }
 
