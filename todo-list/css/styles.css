@@ -117,8 +117,16 @@ nav {
 
 .project-edit {
   background-color: transparent;
-  border: 1px solid transparent;
-  border-radius: 5px;
+  border: none;
+  visibility: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project:hover .project-edit {
+  visibility: visible;
 }
 
 .project-edit:hover {
@@ -126,7 +134,7 @@ nav {
 }
 
 .project-edit:hover img {
-  filter: invert(92%) sepia(35%) saturate(52%) hue-rotate(48deg) brightness(101%) contrast(97%);
+  filter: brightness(0) saturate(100%);
 }
 
 .project-section h2 {
@@ -227,21 +235,27 @@ main {
   color: #E63946;
 }
 
-.task-edit, .task-delete {
+.task-edit {
   height: 30px;
   width: 30px;
   border: none;
   border-radius: 5px;
   background: none;
   cursor: pointer;
+  visibility: hidden;
 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.task-edit:hover, .task-delete:hover {
-  background: #d8f1d0;
+.task:hover .task-edit {
+  visibility: visible;
+}
+
+.task-edit:hover img {
+  /* background: #d8f1d0; */
+  filter: brightness(0) saturate(100%);
 }
 
 main * {
