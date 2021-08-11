@@ -91,27 +91,42 @@ nav {
   flex-direction: column;
 }
 
-.project-section button {
-  background-color: #A8DADC;
-  border: none;
+.project {
   border-radius: 5px;
-  font-family: "Krub", sans-serif;
-  font-size: 20px;
   margin: 5px;
   display: flex;
 }
 
-.project-section button svg,
-.project-section button img,
-.project-section button span {
-  display: inline-block;
-  vertical-align: middle;
+.project:hover {
+  background-color: #8aced0;
+  cursor: pointer;
+}
+
+.project > * {
   margin: 5px;
 }
 
-.project-section button:hover {
-  background-color: #8aced0;
+.project span {
+  font-family: "Krub", sans-serif;
+  font-size: 20px;
+
+  padding-top: 5px;
+  padding-bottom: 5px;
+  flex: 1;
+}
+
+.project-edit {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+.project-edit:hover {
   cursor: pointer;
+}
+
+.project-edit:hover img {
+  filter: invert(92%) sepia(35%) saturate(52%) hue-rotate(48deg) brightness(101%) contrast(97%);
 }
 
 .project-section h2 {

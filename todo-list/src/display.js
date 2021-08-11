@@ -58,17 +58,25 @@ function displayUserProjects() {
     const containerDiv = document.querySelector("#user-projects");
 
     for (const proj of userProjects) {
-        const projBtn = document.createElement("button");
+        const projDiv = document.createElement("div");
+        projDiv.classList.add("project");
 
         const projIcon = document.createElement("img");
         projIcon.src = "../img/list-check.svg";
-        projBtn.appendChild(projIcon);
+        projDiv.appendChild(projIcon);
 
         const projName = document.createElement("span");
         projName.textContent = proj;
-        projBtn.appendChild(projName);
+        projDiv.appendChild(projName);
 
-        containerDiv.appendChild(projBtn);
+        const projEdit = document.createElement("button");
+        projEdit.classList.add("project-edit");
+        const editImg = document.createElement("img");
+        editImg.src = "../img/pencil.svg";
+        projEdit.appendChild(editImg);
+        projDiv.appendChild(projEdit);
+
+        containerDiv.appendChild(projDiv);
     }
 }
 
