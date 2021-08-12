@@ -1,10 +1,11 @@
 import { getTasks, getUserProjects } from "./storageManager";
 import { getRelativeDate, isLate } from "./date";
 
-function displayTasks(sort) {
-    let tasks;
+function displayTasks(project, sort) {
+    let tasks = getTasks().filter(task => task.project === project);
+
     if (sort === "Due date") {
-        tasks = getTasks().sort(compareDueDate);
+        tasks.sort(compareDueDate);
     }
 
     const containerDiv = document.querySelector("#cur-project-container");
