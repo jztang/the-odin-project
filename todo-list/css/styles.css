@@ -102,6 +102,10 @@ nav {
   cursor: pointer;
 }
 
+.current-project {
+  background-color: #8aced0;
+}
+
 .project > * {
   margin: 5px;
 }
@@ -260,8 +264,4 @@ main {
 
 .task-edit:hover img {
   filter: brightness(0) saturate(100%);
-}
-
-main * {
-  /* border: solid black 1px; */
 }

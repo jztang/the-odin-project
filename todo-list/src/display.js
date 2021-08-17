@@ -1,8 +1,32 @@
 import { getTasks, getUserProjects } from "./storageManager";
-import { getRelativeDate, isLate } from "./date";
+import { dueToday, dueThisWeek, compareDueDate, getRelativeDate, isLate } from "./date";
+
+function resetDisplay() {
+    document.querySelectorAll(".project").forEach(proj => {
+        proj.classList.remove("current-project");
+    });
+
+    document.querySelector("#sort-select").value = "due-date";
+
+    document.querySelectorAll(".task").forEach(task => {
+        task.remove();
+    });
+}
 
 function displayTasks(project, sort) {
-    let tasks = getTasks().filter(task => task.project === project);
+    resetDisplay();
+    document.querySelector(`[data-name="${project}"]`).classList.add("current-project");
+    document.querySelector("#cur-project-name").textContent = project;
+
+    let tasks;
+    
+    if (project === "Today") {
+        tasks = getTasks().filter(task => dueToday(task.dueDate));
+    } else if (project === "This Week") {
+        tasks = getTasks().filter(task => dueThisWeek(task.dueDate));
+    } else {
+        tasks = getTasks().filter(task => task.project === project);
+    }
 
     if (sort === "Due date") {
         tasks.sort(compareDueDate);
@@ -44,16 +68,6 @@ function displayTasks(project, sort) {
     }
 }
 
-function compareDueDate(a, b) {
-    if (a.dueDate < b.dueDate && a.dueDate !== "") {
-        return -1;
-    } else if (a.dueDate > b.dueDate || (a.dueDate === "" && b.dueDate !== "")) {
-        return 1;
-    } else {
-        return 0;
-    }
-}
-
 function displayUserProjects() {
     const userProjects = getUserProjects();
     const containerDiv = document.querySelector("#user-projects");
@@ -61,6 +75,7 @@ function displayUserProjects() {
     for (const proj of userProjects) {
         const projDiv = document.createElement("div");
         projDiv.classList.add("project");
+        projDiv.dataset.name = proj;
 
         const projIcon = document.createElement("img");
         projIcon.src = "../img/list-check.svg";
@@ -76,6 +91,10 @@ function displayUserProjects() {
         editImg.src = "../img/pencil.svg";
         projEdit.appendChild(editImg);
         projDiv.appendChild(projEdit);
+
+        projDiv.addEventListener("click", function() {
+            displayTasks(proj, "Due date");
+        });
 
         containerDiv.appendChild(projDiv);
     }

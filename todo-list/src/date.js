@@ -1,4 +1,4 @@
-import { add, sub, format, parseISO, differenceInCalendarDays } from "date-fns";
+import { add, sub, format, parseISO, isToday, isThisWeek, differenceInCalendarDays } from "date-fns";
 
 /**
  * Get the date, numDays relative to today.
@@ -21,10 +21,35 @@ function getDateFromToday(numDays) {
     return formattedDate;
 }
 
+function getDiffFromToday(date) {
+    const today = new Date();
+    const diff = differenceInCalendarDays(parseISO(date), today);
+    return diff;
+}
+
+function dueToday(taskDueDate) {
+    const diff = getDiffFromToday(taskDueDate);
+    return diff <= 0;
+}
+
+function dueThisWeek(taskDueDate) {
+    const diff = getDiffFromToday(taskDueDate);
+    return diff <= 7;
+}
+
+function compareDueDate(a, b) {
+    if (a.dueDate < b.dueDate && a.dueDate !== "") {
+        return -1;
+    } else if (a.dueDate > b.dueDate || (a.dueDate === "" && b.dueDate !== "")) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
 function getRelativeDate(taskDueDate) {
     if (taskDueDate === "") return "";
-    const today = new Date();
-    const diff = differenceInCalendarDays(parseISO(taskDueDate), today);
+    const diff = getDiffFromToday(taskDueDate);
 
     if (diff < -1) {
         return format(parseISO(taskDueDate), "MMM d");
@@ -44,8 +69,7 @@ function getRelativeDate(taskDueDate) {
 }
 
 function isLate(taskDueDate) {
-    const today = new Date();
-    const diff = differenceInCalendarDays(parseISO(taskDueDate), today);
+    const diff = getDiffFromToday(taskDueDate);
 
     if (diff < 0) return true;
     else return false;
@@ -53,6 +77,9 @@ function isLate(taskDueDate) {
 
 export {
     getDateFromToday,
+    dueToday,
+    dueThisWeek,
+    compareDueDate,
     getRelativeDate,
     isLate,
 }
