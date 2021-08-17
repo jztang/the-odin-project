@@ -1,12 +1,10 @@
 import { getTasks, getUserProjects } from "./storageManager";
-import { dueToday, dueThisWeek, compareDueDate, getRelativeDate, isLate } from "./date";
+import { dueToday, dueThisWeek, getRelativeDate, isLate } from "./date";
 
 function resetDisplay() {
     document.querySelectorAll(".project").forEach(proj => {
         proj.classList.remove("current-project");
     });
-
-    document.querySelector("#sort-select").value = "due-date";
 
     document.querySelectorAll(".task").forEach(task => {
         task.remove();
@@ -19,7 +17,7 @@ function displayTasks(project, sort) {
     document.querySelector("#cur-project-name").textContent = project;
 
     let tasks;
-    
+
     if (project === "Today") {
         tasks = getTasks().filter(task => dueToday(task.dueDate));
     } else if (project === "This Week") {
@@ -30,6 +28,13 @@ function displayTasks(project, sort) {
 
     if (sort === "Due date") {
         tasks.sort(compareDueDate);
+        document.querySelector("#sort-select").value = "Due date";
+    } else if (sort === "Priority") {
+        tasks.sort(comparePriority);
+        document.querySelector("#sort-select").value = "Priority";
+    } else if (sort === "Alphabetical") {
+        tasks.sort(compareAlphabetical);
+        document.querySelector("#sort-select").value = "Alphabetical";
     }
 
     const containerDiv = document.querySelector("#cur-project-container");
@@ -65,6 +70,36 @@ function displayTasks(project, sort) {
         taskDiv.appendChild(taskEdit);
 
         containerDiv.appendChild(taskDiv);
+    }
+}
+
+function compareDueDate(a, b) {
+    if (a.dueDate < b.dueDate && a.dueDate !== "") {
+        return -1;
+    } else if (a.dueDate > b.dueDate || (a.dueDate === "" && b.dueDate !== "")) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+function comparePriority(a, b) {
+    if (a.priority < b. priority) {
+        return -1;
+    } else if (a.priority > b.priority) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+function compareAlphabetical(a, b) {
+    if (a.name < b.name) {
+        return -1;
+    } else if (a.name > b.name) {
+        return 1;
+    } else {
+        return 0;
     }
 }
 

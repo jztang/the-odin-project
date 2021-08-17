@@ -10,6 +10,15 @@ for (let proj of defaultProjects) {
     });
 }
 
+const sortSelect = document.querySelector("#sort-select");
+sortSelect.addEventListener("change", (e) => {
+    const curProject = document.querySelector("#cur-project-name").textContent;
+    const sort = e.target.value;
+    // console.log(e.target.value);
+    // console.log(document.querySelector("#cur-project-name").textContent);
+    displayTasks(curProject, sort);
+});
+
 displayUserProjects();
 
 displayTasks("Inbox", "Due date");

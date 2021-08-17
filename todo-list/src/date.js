@@ -37,16 +37,6 @@ function dueThisWeek(taskDueDate) {
     return diff <= 7;
 }
 
-function compareDueDate(a, b) {
-    if (a.dueDate < b.dueDate && a.dueDate !== "") {
-        return -1;
-    } else if (a.dueDate > b.dueDate || (a.dueDate === "" && b.dueDate !== "")) {
-        return 1;
-    } else {
-        return 0;
-    }
-}
-
 function getRelativeDate(taskDueDate) {
     if (taskDueDate === "") return "";
     const diff = getDiffFromToday(taskDueDate);
@@ -79,7 +69,6 @@ export {
     getDateFromToday,
     dueToday,
     dueThisWeek,
-    compareDueDate,
     getRelativeDate,
     isLate,
 }
