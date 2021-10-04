@@ -75,21 +75,17 @@
     </main>
   </div>
 
-  <!-- Modal for adding a new task/project -->
   <div id="new-modal">
-    <!-- New task -->
     <form id="new-task-form">
       <div class="form-title">
         <p id="new-task-text">New Task</p>
       </div>
 
-      <!-- Task name -->
       <div class="input-container">
         <label for="new-task-name">Name</label>
         <input type="text" id="new-task-name" name="name" placeholder="Task name" required>
       </div>
 
-      <!-- Priority -->
       <div class="input-container">
         <label for="new-task-priority">Priority</label>
         <select id="new-task-priority" name="priority" required>
@@ -100,19 +96,16 @@
         </select>
       </div>
 
-      <!-- Due date -->
       <div class="input-container">
         <label for="new-task-date">Due date</label>
         <input type="date" id="new-task-date" name="date">
       </div>
 
-      <!-- Project to put task under -->
       <div class="input-container">
         <label for="new-task-project">Project</label>
         <select id="new-task-project" name="project" required></select>
       </div>
 
-      <!-- Submit/Cancel buttons -->
       <div class ="input-buttons">
         <input type="submit" id="new-task-submit" value="Add task">
         <input type="button" id="new-task-cancel" value="Cancel">

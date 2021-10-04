@@ -4,6 +4,9 @@ import { generateTasks } from "./example";
 let tasks;
 let userProjects;
 
+/**
+ * Get tasks/projects from localStorage; generate example tasks if none exist.
+ */
 function firstLoad() {
     tasks = JSON.parse(localStorage.getItem("tasks"));
     userProjects = JSON.parse(localStorage.getItem("userProjects"));
@@ -19,14 +22,29 @@ function firstLoad() {
     }
 }
 
+/**
+ * Get the array of tasks.
+ * @returns - The task array.
+ */
 function getTasks() {
     return tasks;
 }
 
+/**
+ * Get the array of user projects.
+ * @returns - The user project array.
+ */
 function getUserProjects() {
     return userProjects;
 }
 
+/**
+ * Add a new task.
+ * @param {string} name - The name of the task.
+ * @param {number} priority - The priority level of the task (1-4).
+ * @param {string} dueDate - The due date of the task.
+ * @param {string} project - The project this task belongs to.
+ */
 function addTask(name, priority, dueDate, project) {
     const newTask = taskFactory(name, priority, dueDate, project);
     tasks.push(newTask);

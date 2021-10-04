@@ -1,6 +1,9 @@
 import { getTasks, getUserProjects } from "./storageManager";
 import { dueToday, dueThisWeek, getRelativeDate, isLate } from "./date";
 
+/**
+ * Removes the current project highlight and current tasks.
+ */
 function resetDisplay() {
     document.querySelectorAll(".project").forEach(proj => {
         proj.classList.remove("current-project");
@@ -11,6 +14,11 @@ function resetDisplay() {
     });
 }
 
+/**
+ * Display the tasks under a project, sorted.
+ * @param {string} project - The project to display.
+ * @param {string} sort - The sort to use on the tasks.
+ */
 function displayTasks(project, sort) {
     resetDisplay();
     document.querySelector(`[data-name="${project}"]`).classList.add("current-project");
@@ -18,6 +26,7 @@ function displayTasks(project, sort) {
 
     let tasks;
 
+    // Filter all tasks for the current project
     if (project === "Today") {
         tasks = getTasks().filter(task => dueToday(task.dueDate));
     } else if (project === "This Week") {
@@ -26,6 +35,7 @@ function displayTasks(project, sort) {
         tasks = getTasks().filter(task => task.project === project);
     }
 
+    // Sort the tasks
     if (sort === "Due date") {
         tasks.sort(compareDueDate);
         document.querySelector("#sort-select").value = "Due date";
@@ -37,6 +47,7 @@ function displayTasks(project, sort) {
         document.querySelector("#sort-select").value = "Alphabetical";
     }
 
+    // Add each task to the DOM
     const containerDiv = document.querySelector("#cur-project-container");
 
     for (const task of tasks) {
@@ -73,6 +84,14 @@ function displayTasks(project, sort) {
     }
 }
 
+/**
+ * Compare the due dates of two tasks.
+ * @param {string} a - The due date of the first task.
+ * @param {string} b - The due date of the second task.
+ * @returns - -1 if a is due after b.
+ *             1 if a is due before b.
+ *             0 if a and b are due at the same time.
+ */
 function compareDueDate(a, b) {
     if (a.dueDate < b.dueDate && a.dueDate !== "") {
         return -1;
@@ -83,6 +102,14 @@ function compareDueDate(a, b) {
     }
 }
 
+/**
+ * Compare the priorities of two tasks.
+ * @param {number} a - The priority of the first task. 
+ * @param {number} b - The priority of the second task.
+ * @returns - -1 if a is lower priority than b.
+ *             1 if a is higher priority than b.
+ *             0 if a and b are equal priority.
+ */
 function comparePriority(a, b) {
     if (a.priority < b. priority) {
         return -1;
@@ -93,6 +120,14 @@ function comparePriority(a, b) {
     }
 }
 
+/**
+ * Compare the name of two tasks alphabetically.
+ * @param {string} a - The name of the first task. 
+ * @param {string} b - The name of the second task.
+ * @returns - -1 if a alphabetically comes after b.
+ *             1 if a alphabetically comes before b.
+ *             0 if a and b are alphabetically equal.
+ */
 function compareAlphabetical(a, b) {
     if (a.name < b.name) {
         return -1;
@@ -103,6 +138,9 @@ function compareAlphabetical(a, b) {
     }
 }
 
+/**
+ * Display user projects in the nav bar.
+ */
 function displayUserProjects() {
     const userProjects = getUserProjects();
     const containerDiv = document.querySelector("#user-projects");
@@ -135,6 +173,9 @@ function displayUserProjects() {
     }
 }
 
+/**
+ * Update the projects dropdown in the new task form when "Add task" is clicked.
+ */
 function updateProjDropdown() {
     const projDropdown = document.querySelector("#new-task-project");
     projDropdown.replaceChildren();
@@ -153,6 +194,9 @@ function updateProjDropdown() {
     }
 }
 
+/**
+ * Reset the content of the new task and new project form.
+ */
 function resetForms() {
     document.querySelector("#new-task-form").reset();
     // TODO: add new project form
