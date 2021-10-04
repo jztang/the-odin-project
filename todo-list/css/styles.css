@@ -265,3 +265,62 @@ main {
 .task-edit:hover img {
   filter: brightness(0) saturate(100%);
 }
+
+/*** NEW FORM MODALS ***/
+
+#new-modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#new-task-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border: 1px solid #1d3557;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #f1faee;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.form-title {
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: "KoHo", sans-serif;
+  font-size: 25px;
+}
+
+.input-container {
+  margin: 10px 0px;
+  font-family: "KoHo", sans-serif;
+  font-size: 18px;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+}
+
+.input-container input, .input-container select {
+  font-family: "Krub", sans-serif;
+  font-size: 15px;
+}
+
+.input-buttons {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.input-buttons input {
+  font-family: "KoHo", sans-serif;
+  font-size: 17px;
+}

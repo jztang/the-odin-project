@@ -1,3 +1,4 @@
+import { taskFactory } from "./task";
 import { generateTasks } from "./example";
 
 let tasks;
@@ -26,8 +27,15 @@ function getUserProjects() {
     return userProjects;
 }
 
+function addTask(name, priority, dueDate, project) {
+    const newTask = taskFactory(name, priority, dueDate, project);
+    tasks.push(newTask);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
 export {
     firstLoad,
     getTasks,
     getUserProjects,
+    addTask
 }

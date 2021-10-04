@@ -135,7 +135,33 @@ function displayUserProjects() {
     }
 }
 
+function updateProjDropdown() {
+    const projDropdown = document.querySelector("#new-task-project");
+    projDropdown.replaceChildren();
+
+    const inbox = document.createElement("option");
+    inbox.value = "Inbox";
+    inbox.text = "Inbox";
+    projDropdown.add(inbox);
+
+    const userProjects = getUserProjects();
+    for (const proj of userProjects) {
+        const opt = document.createElement("option");
+        opt.value = proj;
+        opt.text = proj;
+        projDropdown.add(opt);
+    }
+}
+
+function resetForms() {
+    document.querySelector("#new-task-form").reset();
+    // TODO: add new project form
+    document.querySelector("#new-modal").style.display = "none";
+}
+
 export {
     displayTasks,
     displayUserProjects,
+    updateProjDropdown,
+    resetForms
 }
