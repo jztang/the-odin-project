@@ -76,9 +76,9 @@
   </div>
 
   <div id="new-modal">
-    <form id="new-task-form">
+    <form id="new-task-form" class="new-form">
       <div class="form-title">
-        <p id="new-task-text">New Task</p>
+        <p>New Task</p>
       </div>
 
       <div class="input-container">
@@ -108,7 +108,23 @@
 
       <div class ="input-buttons">
         <input type="submit" id="new-task-submit" value="Add task">
-        <input type="button" id="new-task-cancel" value="Cancel">
+        <input type="button" class="form-cancel" value="Cancel">
+      </div>
+    </form>
+
+    <form id="new-project-form" class="new-form">
+      <div class="form-title">
+        <p>New project</p>
+      </div>
+
+      <div class="input-container">
+        <label for="new-project-name">Name</label>
+        <input type="text" id="new-project-name" name="name" placeholder="Project name" required>
+      </div>
+
+      <div class ="input-buttons">
+        <input type="submit" id="new-project-submit" value="Add project">
+        <input type="button" class="form-cancel" value="Cancel">
       </div>
     </form>
   </div>

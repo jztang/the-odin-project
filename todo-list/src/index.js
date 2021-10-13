@@ -1,14 +1,24 @@
-import { firstLoad, addTask } from "./storageManager";
+import { firstLoad, addTask, addProject } from "./storageManager";
 import { displayTasks, displayUserProjects, updateProjDropdown, resetForms } from "./display";
 
 firstLoad();
 
-// Open modal for adding a new task
+// Open modal for adding a new task or project
 const addTaskBtn = document.querySelector("#add-task");
+const newTaskForm = document.querySelector("#new-task-form");
+const newProjBtn = document.querySelector("#new-project");
+const newProjForm = document.querySelector("#new-project-form");
 const newModal = document.querySelector("#new-modal");
+
 addTaskBtn.addEventListener("click", () => {
     updateProjDropdown();
     newModal.style.display = "block";
+    newTaskForm.style.display = "flex";
+});
+
+newProjBtn.addEventListener("click", () => {
+    newModal.style.display = "block";
+    newProjForm.style.display = "flex";
 });
 
 // Open the project when the project is clicked (default projects)
@@ -47,11 +57,22 @@ document.querySelector("#new-task-form").addEventListener("submit", (event) => {
     displayTasks(curProject, curSort);
 });
 
+// Handle submitting a new project
+document.querySelector("#new-project-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const projName = document.querySelector("#new-project-name").value;
+    addProject(projName);
+    
+    resetForms();
+    displayUserProjects();
+});
+
 // Ways to close out of the form
 newModal.addEventListener("click", (event) => {
     if (event.target == newModal) resetForms();
 });
 
-document.querySelector("#new-task-cancel").addEventListener("click", () => {
-    resetForms();
-})
+document.querySelectorAll(".form-cancel").forEach(btn => {
+    btn.addEventListener("click", () => resetForms());
+});

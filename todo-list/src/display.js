@@ -142,6 +142,10 @@ function compareAlphabetical(a, b) {
  * Display user projects in the nav bar.
  */
 function displayUserProjects() {
+    document.querySelectorAll("#user-projects > .project").forEach(proj => {
+        proj.remove();
+    });
+
     const userProjects = getUserProjects();
     const containerDiv = document.querySelector("#user-projects");
 
@@ -199,7 +203,9 @@ function updateProjDropdown() {
  */
 function resetForms() {
     document.querySelector("#new-task-form").reset();
-    // TODO: add new project form
+    document.querySelector("#new-task-form").style.display = "none";
+    document.querySelector("#new-project-form").reset();
+    document.querySelector("#new-project-form").style.display = "none";
     document.querySelector("#new-modal").style.display = "none";
 }
 

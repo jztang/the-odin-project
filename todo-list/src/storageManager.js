@@ -51,9 +51,19 @@ function addTask(name, priority, dueDate, project) {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
+/**
+ * Add a new project.
+ * @param {string} name - The name of the project. 
+ */
+function addProject(name) {
+    userProjects.push(name);
+    localStorage.setItem("userProjects", JSON.stringify(userProjects));
+}
+
 export {
     firstLoad,
     getTasks,
     getUserProjects,
-    addTask
+    addTask,
+    addProject
 }
