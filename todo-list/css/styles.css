@@ -314,6 +314,14 @@ main {
   font-size: 15px;
 }
 
+.error {
+  grid-column: 2 / 3;
+  margin-top: 5px;
+  color:#E63946;
+  font-family: "Krub", sans-serif;
+  font-size: 15px;
+}
+
 .input-buttons {
   margin-top: 20px;
   text-align: center;

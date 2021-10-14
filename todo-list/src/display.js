@@ -202,8 +202,11 @@ function updateProjDropdown() {
  * Reset the content of the new task and new project form.
  */
 function resetForms() {
+    document.querySelector("#new-task-submit").disabled = true;
     document.querySelector("#new-task-form").reset();
     document.querySelector("#new-task-form").style.display = "none";
+    document.querySelector("#new-project-error").textContent = "";
+    document.querySelector("#new-project-submit").disabled = true;
     document.querySelector("#new-project-form").reset();
     document.querySelector("#new-project-form").style.display = "none";
     document.querySelector("#new-modal").style.display = "none";
