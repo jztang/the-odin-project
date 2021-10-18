@@ -1,4 +1,4 @@
-import { firstLoad, getUserProjects, addTask, addProject, editProject } from "./storageManager";
+import { firstLoad, getUserProjects, addTask, addProject, editProject, deleteProject } from "./storageManager";
 import { displayTasks, displayUserProjects, updateProjDropdown, resetForms } from "./display";
 
 firstLoad();
@@ -128,6 +128,19 @@ document.querySelector("#edit-project-form").addEventListener("submit", (event) 
     resetForms();
     displayUserProjects();
     displayTasks(editName, document.querySelector("#sort-select").value);
+});
+
+// Deleting a project
+document.querySelector("#edit-project-delete").addEventListener("click", () => {
+    const projName = document.querySelector("#cur-project-name").textContent;
+    const delConfirm = confirm(`Are you sure you want to delete Project "${projName}"? ` + 
+        `All tasks under the project will also be deleted. This action cannot be undone.`);
+    if (delConfirm) {
+        deleteProject(projName);
+        resetForms();
+        displayUserProjects();
+        displayTasks("Inbox", "Due date");
+    }
 });
 
 // Ways to close out of the form

@@ -78,11 +78,24 @@ function editProject(curName, editName) {
     localStorage.setItem("userProjects", JSON.stringify(userProjects));
 }
 
+/**
+ * Delete a project and its tasks.
+ * @param {string} name - The name of the project. 
+ */
+function deleteProject(name) {
+    tasks = tasks.filter(task => task.project !== name);
+    userProjects.splice(userProjects.indexOf(name), 1);
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    localStorage.setItem("userProjects", JSON.stringify(userProjects));
+}
+
 export {
     firstLoad,
     getTasks,
     getUserProjects,
     addTask,
     addProject,
-    editProject
+    editProject,
+    deleteProject
 }

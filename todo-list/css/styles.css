@@ -331,3 +331,12 @@ form {
   font-family: "KoHo", sans-serif;
   font-size: 17px;
 }
+
+.edit-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+#edit-project-delete {
+  color: #E63946;
+}
