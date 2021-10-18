@@ -167,6 +167,15 @@ function displayUserProjects() {
         const editImg = document.createElement("img");
         editImg.src = "../img/pencil.svg";
         projEdit.appendChild(editImg);
+        projEdit.addEventListener("click", (event) => {
+            if (document.querySelector("#cur-project-name").textContent === proj) {
+                event.stopPropagation();
+            }
+            document.querySelector("#new-modal").style.display = "block";
+            document.querySelector("#edit-project-form").style.display = "flex";
+            document.querySelector("#edit-project-form .form-title").textContent = `Edit Project - ${proj}`;
+            document.querySelector("#edit-project-name").value = proj;
+        });
         projDiv.appendChild(projEdit);
 
         projDiv.addEventListener("click", function() {
@@ -209,6 +218,9 @@ function resetForms() {
     document.querySelector("#new-project-submit").disabled = true;
     document.querySelector("#new-project-form").reset();
     document.querySelector("#new-project-form").style.display = "none";
+    document.querySelector("#edit-project-error").textContent = "";
+    document.querySelector("#edit-project-submit").disabled = true;
+    document.querySelector("#edit-project-form").style.display = "none";
     document.querySelector("#new-modal").style.display = "none";
 }
 

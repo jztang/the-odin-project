@@ -60,10 +60,29 @@ function addProject(name) {
     localStorage.setItem("userProjects", JSON.stringify(userProjects));
 }
 
+/**
+ * Edit the name of a project, and move tasks under the old project to the new name.
+ * @param {string} curName - The current name of the project.
+ * @param {string} editName - The new name for the project.
+ */
+function editProject(curName, editName) {
+    userProjects[userProjects.indexOf(curName)] = editName;
+
+    tasks.forEach(task => {
+        if (task.project === curName) {
+            task.project = editName;
+        }
+    });
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    localStorage.setItem("userProjects", JSON.stringify(userProjects));
+}
+
 export {
     firstLoad,
     getTasks,
     getUserProjects,
     addTask,
-    addProject
+    addProject,
+    editProject
 }

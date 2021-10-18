@@ -1,4 +1,4 @@
-import { firstLoad, getUserProjects, addTask, addProject } from "./storageManager";
+import { firstLoad, getUserProjects, addTask, addProject, editProject } from "./storageManager";
 import { displayTasks, displayUserProjects, updateProjDropdown, resetForms } from "./display";
 
 firstLoad();
@@ -67,7 +67,7 @@ document.querySelector("#new-task-form").addEventListener("submit", (event) => {
     displayTasks(curProject, curSort);
 });
 
-// Project name validation
+// New project name validation
 document.querySelector("#new-project-name").addEventListener("input", () => {
     const projName = document.querySelector("#new-project-name").value.trim();
     const projects = ["Inbox", "Today", "This Week"].concat(getUserProjects());
@@ -90,11 +90,44 @@ document.querySelector("#new-project-name").addEventListener("input", () => {
 document.querySelector("#new-project-form").addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const projName = document.querySelector("#new-project-name").value;
+    const projName = document.querySelector("#new-project-name").value.trim();
     addProject(projName);
 
     resetForms();
     displayUserProjects();
+});
+
+// Edit project name validation
+document.querySelector("#edit-project-name").addEventListener("input", () => {
+    const editName = document.querySelector("#edit-project-name").value.trim();
+    const curName = document.querySelector("#cur-project-name").textContent;
+    const projects = ["Inbox", "Today", "This Week"].concat(getUserProjects());
+    const saveBtn = document.querySelector("#edit-project-submit");
+    let errorText = document.querySelector("#edit-project-error");
+
+    if (editName.length < 1 || editName === curName) {
+        saveBtn.disabled = true;
+        errorText.textContent = "";
+    } else if (projects.includes(editName) && editName !== curName) {
+        saveBtn.disabled = true;
+        errorText.textContent = "This project already exists";
+    } else {
+        saveBtn.disabled = false;
+        errorText.textContent = "";
+    }
+});
+
+// Handle editing a project name
+document.querySelector("#edit-project-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const curName = document.querySelector("#cur-project-name").textContent;
+    const editName = document.querySelector("#edit-project-name").value.trim();
+    editProject(curName, editName);
+
+    resetForms();
+    displayUserProjects();
+    displayTasks(editName, document.querySelector("#sort-select").value);
 });
 
 // Ways to close out of the form

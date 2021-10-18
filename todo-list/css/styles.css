@@ -265,7 +265,7 @@ main {
   filter: brightness(0) saturate(100%);
 }
 
-/*** NEW FORM MODALS ***/
+/*** FORM MODALS ***/
 
 #new-modal {
   display: none;
@@ -277,7 +277,7 @@ main {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.new-form {
+form {
   position: fixed;
   top: 50%;
   left: 50%;
