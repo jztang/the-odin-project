@@ -67,6 +67,15 @@ function editTask(taskId, name, priority, dueDate, project) {
 }
 
 /**
+ * Delete a task.
+ * @param {string} id - The ID of the task to be deleted.
+ */
+function deleteTask(id) {
+    tasks = tasks.filter(task => task.id !== id);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+/**
  * Get the array of user projects.
  * @returns - The user project array.
  */
@@ -118,6 +127,7 @@ export {
     getTasks,
     addTask,
     editTask,
+    deleteTask,
     getUserProjects,
     addProject,
     editProject,

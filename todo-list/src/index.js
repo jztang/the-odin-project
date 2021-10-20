@@ -1,4 +1,4 @@
-import { firstLoad, addTask, editTask, getUserProjects, addProject, editProject, deleteProject } from "./storageManager";
+import { firstLoad, addTask, editTask, deleteTask, getUserProjects, addProject, editProject, deleteProject } from "./storageManager";
 import { displayTasks, displayUserProjects, updateProjDropdown, resetForms } from "./display";
 
 firstLoad();
@@ -234,6 +234,20 @@ editTaskForm.addEventListener("submit", (event) => {
     const curProject = document.querySelector("#cur-project-name").textContent;
     const curSort = document.querySelector("#sort-select").value;
     displayTasks(curProject, curSort);
+});
+
+// Deleting a task
+document.querySelector("#edit-task-delete").addEventListener("click", () => {
+    const delConfirm = confirm(`Are you sure want to delete Task ` +
+        `"${editTaskForm.dataset.name}"? This action cannot be undone.`);
+    if (delConfirm) {
+        deleteTask(editTaskForm.dataset.id);
+        resetEditFlags();
+        resetForms();
+        const curProject = document.querySelector("#cur-project-name").textContent;
+        const curSort = document.querySelector("#sort-select").value;
+        displayTasks(curProject, curSort);
+    }
 });
 
 // Ways to close out of the form

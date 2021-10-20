@@ -140,7 +140,7 @@
       
       <div class ="input-buttons edit-buttons">
         <div>
-          <input type="button" id="edit-project-delete" value="Delete">
+          <input type="button" id="edit-project-delete" class="delete" value="Delete">
         </div>
         <div>
           <input type="submit" id="edit-project-submit" value="Save" disabled>
@@ -179,9 +179,14 @@
         <select id="edit-task-project" name="project" required></select>
       </div>
 
-      <div class ="input-buttons">
-        <input type="submit" id="edit-task-submit" value="Save" disabled>
-        <input type="button" class="form-cancel" value="Cancel">
+      <div class ="input-buttons edit-buttons">
+        <div>
+          <input type="button" id="edit-task-delete" class="delete" value="Delete">
+        </div>
+        <div>
+          <input type="submit" id="edit-task-submit" value="Save" disabled>
+          <input type="button" class="form-cancel" value="Cancel">
+        </div>
       </div>
     </form>
   </div>

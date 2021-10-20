@@ -337,6 +337,6 @@ form {
   justify-content: space-between;
 }
 
-#edit-project-delete {
+.delete {
   color: #E63946;
 }
