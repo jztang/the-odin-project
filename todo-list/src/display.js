@@ -1,4 +1,4 @@
-import { getTasks, getUserProjects } from "./storageManager";
+import { getTasks, deleteTask, getUserProjects } from "./storageManager";
 import { dueToday, dueThisWeek, getRelativeDate, isLate } from "./date";
 
 /**
@@ -60,6 +60,12 @@ function displayTasks(project, sort) {
         const checkImg = document.createElement("img");
         checkImg.src = `../img/circle-p${task.priority}.svg`;
         taskCheck.appendChild(checkImg);
+        taskCheck.addEventListener("click", () => {
+            deleteTask(task.id);
+            const curProject = document.querySelector("#cur-project-name").textContent;
+            const curSort = document.querySelector("#sort-select").value;
+            displayTasks(curProject, curSort);
+        });
         taskDiv.appendChild(taskCheck);
 
         const taskName = document.createElement("span");
@@ -127,7 +133,7 @@ function compareDueDate(a, b) {
  *             0 if a and b are equal priority.
  */
 function comparePriority(a, b) {
-    if (a.priority < b. priority) {
+    if (a.priority < b.priority) {
         return -1;
     } else if (a.priority > b.priority) {
         return 1;
@@ -194,7 +200,7 @@ function displayUserProjects() {
         });
         projDiv.appendChild(projEdit);
 
-        projDiv.addEventListener("click", function() {
+        projDiv.addEventListener("click", function () {
             displayTasks(proj, "Due date");
         });
 
@@ -240,7 +246,7 @@ function resetForms() {
     document.querySelector("#edit-project-error").textContent = "";
     document.querySelector("#edit-project-submit").disabled = true;
     document.querySelector("#edit-project-form").style.display = "none";
-    
+
     document.querySelector("#edit-task-submit").disabled = true;
     document.querySelector("#edit-task-form").style.display = "none";
 
