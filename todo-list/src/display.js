@@ -78,6 +78,22 @@ function displayTasks(project, sort) {
         const editImg = document.createElement("img");
         editImg.src = "../img/pencil.svg";
         taskEdit.appendChild(editImg);
+        taskEdit.addEventListener("click", () => {
+            updateProjDropdown("#edit-task-project");
+            document.querySelector("#new-modal").style.display = "block";
+            document.querySelector("#edit-task-form").style.display = "flex";
+
+            document.querySelector("#edit-task-form").dataset.id = task.id;
+            document.querySelector("#edit-task-form").dataset.name = task.name;
+            document.querySelector("#edit-task-form").dataset.priority = task.priority;
+            document.querySelector("#edit-task-form").dataset.dueDate = task.dueDate;
+            document.querySelector("#edit-task-form").dataset.project = task.project;
+
+            document.querySelector("#edit-task-name").value = task.name;
+            document.querySelector("#edit-task-priority").value = task.priority;
+            document.querySelector("#edit-task-date").value = task.dueDate;
+            document.querySelector("#edit-task-project").value = task.project;
+        });
         taskDiv.appendChild(taskEdit);
 
         containerDiv.appendChild(taskDiv);
@@ -187,10 +203,11 @@ function displayUserProjects() {
 }
 
 /**
- * Update the projects dropdown in the new task form when "Add task" is clicked.
+ * Update the projects dropdown when adding or editing a task.
+ * @param {string} dropdown - The dropdown element to update.
  */
-function updateProjDropdown() {
-    const projDropdown = document.querySelector("#new-task-project");
+function updateProjDropdown(dropdown) {
+    const projDropdown = document.querySelector(dropdown);
     projDropdown.replaceChildren();
 
     const inbox = document.createElement("option");
@@ -214,13 +231,19 @@ function resetForms() {
     document.querySelector("#new-task-submit").disabled = true;
     document.querySelector("#new-task-form").reset();
     document.querySelector("#new-task-form").style.display = "none";
+
     document.querySelector("#new-project-error").textContent = "";
     document.querySelector("#new-project-submit").disabled = true;
     document.querySelector("#new-project-form").reset();
     document.querySelector("#new-project-form").style.display = "none";
+
     document.querySelector("#edit-project-error").textContent = "";
     document.querySelector("#edit-project-submit").disabled = true;
     document.querySelector("#edit-project-form").style.display = "none";
+    
+    document.querySelector("#edit-task-submit").disabled = true;
+    document.querySelector("#edit-task-form").style.display = "none";
+
     document.querySelector("#new-modal").style.display = "none";
 }
 

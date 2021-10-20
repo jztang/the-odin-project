@@ -148,6 +148,42 @@
         </div>
       </div>
     </form>
+
+    <form id="edit-task-form">
+      <div class="form-title">
+        <p>Edit Task</p>
+      </div>
+
+      <div class="input-container">
+        <label for="edit-task-name">Name</label>
+        <input type="text" id="edit-task-name" name="name" placeholder="Task name" required>
+      </div>
+
+      <div class="input-container">
+        <label for="edit-task-priority">Priority</label>
+        <select id="edit-task-priority" name="priority" required>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4" selected>4</option>
+        </select>
+      </div>
+
+      <div class="input-container">
+        <label for="edit-task-date">Due date</label>
+        <input type="date" id="edit-task-date" name="date">
+      </div>
+
+      <div class="input-container">
+        <label for="edit-task-project">Project</label>
+        <select id="edit-task-project" name="project" required></select>
+      </div>
+
+      <div class ="input-buttons">
+        <input type="submit" id="edit-task-submit" value="Save" disabled>
+        <input type="button" class="form-cancel" value="Cancel">
+      </div>
+    </form>
   </div>
 </body>
 

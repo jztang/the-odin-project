@@ -1,4 +1,4 @@
-import { firstLoad, getUserProjects, addTask, addProject, editProject, deleteProject } from "./storageManager";
+import { firstLoad, addTask, editTask, getUserProjects, addProject, editProject, deleteProject } from "./storageManager";
 import { displayTasks, displayUserProjects, updateProjDropdown, resetForms } from "./display";
 
 firstLoad();
@@ -11,7 +11,7 @@ const newProjForm = document.querySelector("#new-project-form");
 const newModal = document.querySelector("#new-modal");
 
 addTaskBtn.addEventListener("click", () => {
-    updateProjDropdown();
+    updateProjDropdown("#new-task-project");
     newModal.style.display = "block";
     newTaskForm.style.display = "flex";
 });
@@ -41,8 +41,8 @@ sortSelect.addEventListener("change", (e) => {
 
 displayTasks("Inbox", "Due date");
 
-// Task name validation
-document.querySelector("#new-task-name").addEventListener("input", (event) => {
+// Task validation for adding a new task
+document.querySelector("#new-task-name").addEventListener("input", () => {
     const submitBtn = document.querySelector("#new-task-submit");
     if (document.querySelector("#new-task-name").value.trim().length < 1) {
         submitBtn.disabled = true;
@@ -102,17 +102,17 @@ document.querySelector("#edit-project-name").addEventListener("input", () => {
     const editName = document.querySelector("#edit-project-name").value.trim();
     const curName = document.querySelector("#cur-project-name").textContent;
     const projects = ["Inbox", "Today", "This Week"].concat(getUserProjects());
-    const saveBtn = document.querySelector("#edit-project-submit");
+    const saveProjBtn = document.querySelector("#edit-project-submit");
     let errorText = document.querySelector("#edit-project-error");
 
     if (editName.length < 1 || editName === curName) {
-        saveBtn.disabled = true;
+        saveProjBtn.disabled = true;
         errorText.textContent = "";
     } else if (projects.includes(editName) && editName !== curName) {
-        saveBtn.disabled = true;
+        saveProjBtn.disabled = true;
         errorText.textContent = "This project already exists";
     } else {
-        saveBtn.disabled = false;
+        saveProjBtn.disabled = false;
         errorText.textContent = "";
     }
 });
@@ -133,7 +133,7 @@ document.querySelector("#edit-project-form").addEventListener("submit", (event) 
 // Deleting a project
 document.querySelector("#edit-project-delete").addEventListener("click", () => {
     const projName = document.querySelector("#cur-project-name").textContent;
-    const delConfirm = confirm(`Are you sure you want to delete Project "${projName}"? ` + 
+    const delConfirm = confirm(`Are you sure you want to delete Project "${projName}"? ` +
         `All tasks under the project will also be deleted. This action cannot be undone.`);
     if (delConfirm) {
         deleteProject(projName);
@@ -143,11 +143,110 @@ document.querySelector("#edit-project-delete").addEventListener("click", () => {
     }
 });
 
+// Task validation for editing a task
+const editTaskForm = document.querySelector("#edit-task-form");
+const saveTaskBtn = document.querySelector("#edit-task-submit");
+let nameEmpty = false;
+let nameChanged = false;
+let prioChanged = false;
+let dateChanged = false;
+let projChanged = false;
+
+/**
+ * Enables or disables the save button, based on whether or not valid changes were made.
+ */
+function validateChanges() {
+    let valid = false;
+    if (nameChanged || prioChanged || dateChanged || projChanged) {
+        valid = true;
+    }
+    if (nameEmpty) {
+        valid = false;
+    }
+
+    if (valid) {
+        saveTaskBtn.disabled = false;
+    } else {
+        saveTaskBtn.disabled = true;
+    }
+}
+
+const editTaskName = document.querySelector("#edit-task-name");
+editTaskName.addEventListener("input", () => {
+    if (editTaskName.value.trim().length < 1) {
+        nameEmpty = true;
+        nameChanged = true;
+    } else if (editTaskName.value.trim() === editTaskForm.dataset.name) {
+        nameEmpty = false;
+        nameChanged = false;
+    } else {
+        nameEmpty = false;
+        nameChanged = true;
+    }
+    validateChanges();
+});
+
+const editTaskPriority = document.querySelector("#edit-task-priority");
+editTaskPriority.addEventListener("input", () => {
+    if (editTaskPriority.value === editTaskForm.dataset.priority) {
+        prioChanged = false;
+    } else {
+        prioChanged = true;
+    }
+    validateChanges();
+});
+
+const editTaskDate = document.querySelector("#edit-task-date");
+editTaskDate.addEventListener("input", () => {
+    if (editTaskDate.value === editTaskForm.dataset.dueDate) {
+        dateChanged = false;
+    } else {
+        dateChanged = true;
+    }
+    validateChanges();
+});
+
+const editTaskProject = document.querySelector("#edit-task-project");
+editTaskProject.addEventListener("input", () => {
+    if (editTaskProject.value === editTaskForm.dataset.project) {
+        projChanged = false;
+    } else {
+        projChanged = true;
+    }
+    validateChanges();
+});
+
+/**
+ * Resets flags used for edit task validation.
+ */
+function resetEditFlags() {
+    nameEmpty = nameChanged = prioChanged = dateChanged = projChanged = false;
+}
+
+// Handle editing a task
+editTaskForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    editTask(editTaskForm.dataset.id, editTaskName.value.trim(), editTaskPriority.value,
+        editTaskDate.value, editTaskProject.value);
+
+    resetEditFlags();
+    resetForms();
+    const curProject = document.querySelector("#cur-project-name").textContent;
+    const curSort = document.querySelector("#sort-select").value;
+    displayTasks(curProject, curSort);
+});
+
 // Ways to close out of the form
 newModal.addEventListener("click", (event) => {
-    if (event.target == newModal) resetForms();
+    if (event.target == newModal) {
+        resetEditFlags();
+        resetForms();
+    }
 });
 
 document.querySelectorAll(".form-cancel").forEach(btn => {
-    btn.addEventListener("click", () => resetForms());
+    btn.addEventListener("click", () => {
+        resetEditFlags();
+        resetForms();
+    });
 });

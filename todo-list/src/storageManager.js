@@ -31,14 +31,6 @@ function getTasks() {
 }
 
 /**
- * Get the array of user projects.
- * @returns - The user project array.
- */
-function getUserProjects() {
-    return userProjects;
-}
-
-/**
  * Add a new task.
  * @param {string} name - The name of the task.
  * @param {number} priority - The priority level of the task (1-4).
@@ -49,6 +41,37 @@ function addTask(name, priority, dueDate, project) {
     const newTask = taskFactory(name, priority, dueDate, project);
     tasks.push(newTask);
     localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+/**
+ * Edit an existing task.
+ * @param {string} taskId - The ID of the task to edit.
+ * @param {string} name - The new name of the task.
+ * @param {number} priority - The new priority of the task.
+ * @param {string} dueDate - The new due date of the task.
+ * @param {string} project - The new project of the task.
+ */
+function editTask(taskId, name, priority, dueDate, project) {
+    let task;
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].id === taskId) {
+            task = tasks[i];
+        }
+    }
+
+    task.name = name;
+    task.priority = priority;
+    task.dueDate = dueDate;
+    task.project = project;
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+/**
+ * Get the array of user projects.
+ * @returns - The user project array.
+ */
+function getUserProjects() {
+    return userProjects;
 }
 
 /**
@@ -93,8 +116,9 @@ function deleteProject(name) {
 export {
     firstLoad,
     getTasks,
-    getUserProjects,
     addTask,
+    editTask,
+    getUserProjects,
     addProject,
     editProject,
     deleteProject
