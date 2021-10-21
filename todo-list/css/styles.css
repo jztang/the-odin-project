@@ -113,6 +113,10 @@ nav {
   font-family: "Krub", sans-serif;
   font-size: 20px;
 
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
   padding-top: 5px;
   padding-bottom: 5px;
   flex: 1;
@@ -171,11 +175,16 @@ main {
 #cur-project-name {
   font-family: "Koho", sans-serif;
   font-size: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: normal;
 }
 
 #sort-by {
   font-family: "Krub", sans-serif;
   font-size: 15px;
+  margin-left: 10px;
 
   display: flex;
   align-items: center;
@@ -183,6 +192,7 @@ main {
 
 #sort-by label {
   margin-right: 5px;
+  white-space: nowrap;
 }
 
 .task {
@@ -229,6 +239,10 @@ main {
 
 .task-name {
   flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: normal;
 }
 
 .task-due-date {
@@ -312,6 +326,11 @@ form {
 .input-container input, .input-container select {
   font-family: "Krub", sans-serif;
   font-size: 15px;
+}
+
+.input-container select {
+  width: 194px;
+  text-overflow: ellipsis;
 }
 
 .error {

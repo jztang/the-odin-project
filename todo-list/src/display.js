@@ -195,7 +195,6 @@ function displayUserProjects() {
             }
             document.querySelector("#new-modal").style.display = "block";
             document.querySelector("#edit-project-form").style.display = "flex";
-            document.querySelector("#edit-project-form .form-title").textContent = `Edit Project - ${proj}`;
             document.querySelector("#edit-project-name").value = proj;
         });
         projDiv.appendChild(projEdit);
