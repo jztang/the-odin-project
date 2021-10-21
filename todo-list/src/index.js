@@ -251,7 +251,7 @@ document.querySelector("#edit-task-delete").addEventListener("click", () => {
 });
 
 // Ways to close out of the form
-newModal.addEventListener("click", (event) => {
+newModal.addEventListener("mousedown", (event) => {
     if (event.target == newModal) {
         resetEditFlags();
         resetForms();
@@ -263,4 +263,11 @@ document.querySelectorAll(".form-cancel").forEach(btn => {
         resetEditFlags();
         resetForms();
     });
+});
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        resetEditFlags();
+        resetForms();
+    }
 });
