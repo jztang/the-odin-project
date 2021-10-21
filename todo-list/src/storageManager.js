@@ -122,6 +122,16 @@ function deleteProject(name) {
     localStorage.setItem("userProjects", JSON.stringify(userProjects));
 }
 
+/**
+ * Delete all tasks and projects.
+ */
+function deleteAll() {
+    tasks = [];
+    userProjects = [];
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    localStorage.setItem("userProjects", JSON.stringify(userProjects));
+}
+
 export {
     firstLoad,
     getTasks,
@@ -131,5 +141,6 @@ export {
     getUserProjects,
     addProject,
     editProject,
-    deleteProject
+    deleteProject,
+    deleteAll
 }

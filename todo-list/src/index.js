@@ -1,8 +1,11 @@
-import { firstLoad, addTask, editTask, deleteTask, getUserProjects, addProject, editProject, deleteProject } from "./storageManager";
+import { firstLoad, addTask, editTask, deleteTask, getUserProjects, addProject, editProject, deleteProject, deleteAll } from "./storageManager";
 import { displayTasks, displayUserProjects, updateProjDropdown, resetForms } from "./display";
 
 firstLoad();
+displayUserProjects();
+displayTasks("Inbox", "Due date");
 
+// VARIOUS EVENT LISTENERS
 // Open modal for adding a new task or project
 const addTaskBtn = document.querySelector("#add-task");
 const newTaskForm = document.querySelector("#new-task-form");
@@ -29,7 +32,19 @@ for (let proj of defaultProjects) {
     });
 }
 
-displayUserProjects();
+// Demo buttons
+document.querySelector("#demo-reset").addEventListener("click", () => {
+    localStorage.clear();
+    firstLoad();
+    displayUserProjects();
+    displayTasks("Inbox", "Due date");
+});
+
+document.querySelector("#demo-blank").addEventListener("click", () => {
+    deleteAll();
+    displayUserProjects();
+    displayTasks("Inbox", "Due date");
+});
 
 // Change the task sorting when the dropdown value is changed
 const sortSelect = document.querySelector("#sort-select");
@@ -39,7 +54,6 @@ sortSelect.addEventListener("change", (e) => {
     displayTasks(curProject, sort);
 });
 
-displayTasks("Inbox", "Due date");
 
 // Task validation for adding a new task
 document.querySelector("#new-task-name").addEventListener("input", () => {

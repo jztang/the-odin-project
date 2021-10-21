@@ -150,6 +150,34 @@ nav {
   margin: 10px;
 }
 
+#demo-buttons {
+  /* border: 1px dashed red; */
+  margin: 22px;
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+#demo-buttons button {
+  font-family: "Koho", sans-serif;
+  font-size: 17.5px;
+  border-radius: 5px;
+  background-color: #e63946;
+  border: solid 2px transparent;
+  color: #f1faee;
+  width: 120px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#demo-buttons button:hover {
+  border: solid 2px black;
+}
+
+#demo-buttons button:active {
+  background-color: #DA1B2B;
+}
+
 /*** MAIN CONTENT ***/
 
 main {
