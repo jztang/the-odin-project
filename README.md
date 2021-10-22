@@ -33,3 +33,9 @@ This repository stores all of my projects for [The Odin Project](https://www.the
 [Restaurant Page](https://jztang.github.io/the-odin-project/restaurant-page/dist/)
 - A mockup website for a fictional ramen restaurant
 - Includes tabs for about, menu, and contact info
+
+[Todo List](https://jztang.github.io/the-odin-project/todo-list/dist/)
+- A todo list app inspired by [Todoist](https://todoist.com/)
+- The user can add tasks with a priority, due date, and project
+- Sort tasks by due date, priority, or alphabetical
+- Edit or delete existing tasks and projects
