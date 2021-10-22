@@ -108,16 +108,16 @@ function displayTasks(project, sort) {
 
 /**
  * Compare the due dates of two tasks.
- * @param {string} a - The due date of the first task.
- * @param {string} b - The due date of the second task.
- * @returns - -1 if a is due after b.
- *             1 if a is due before b.
+ * @param {object} a - The first task.
+ * @param {object} b - The second task.
+ * @returns - -1 if a is due before b.
+ *             1 if a is due after b.
  *             0 if a and b are due at the same time.
  */
 function compareDueDate(a, b) {
-    if (a.dueDate < b.dueDate && a.dueDate !== "") {
+    if ((a.dueDate < b.dueDate || b.dueDate === "") && a.dueDate !== "") {
         return -1;
-    } else if (a.dueDate > b.dueDate || (a.dueDate === "" && b.dueDate !== "")) {
+    } else if ((a.dueDate > b.dueDate || a.dueDate === "") && b.dueDate !== "") {
         return 1;
     } else {
         return 0;
@@ -126,10 +126,10 @@ function compareDueDate(a, b) {
 
 /**
  * Compare the priorities of two tasks.
- * @param {number} a - The priority of the first task. 
- * @param {number} b - The priority of the second task.
- * @returns - -1 if a is lower priority than b.
- *             1 if a is higher priority than b.
+ * @param {object} a - The first task. 
+ * @param {object} b - The second task.
+ * @returns - -1 if a is higher priority than b.
+ *             1 if a is lower priority than b.
  *             0 if a and b are equal priority.
  */
 function comparePriority(a, b) {
@@ -144,10 +144,10 @@ function comparePriority(a, b) {
 
 /**
  * Compare the name of two tasks alphabetically.
- * @param {string} a - The name of the first task. 
- * @param {string} b - The name of the second task.
- * @returns - -1 if a alphabetically comes after b.
- *             1 if a alphabetically comes before b.
+ * @param {object} a - The first task. 
+ * @param {object} b - The second task.
+ * @returns - -1 if a alphabetically comes before b.
+ *             1 if a alphabetically comes after b.
  *             0 if a and b are alphabetically equal.
  */
 function compareAlphabetical(a, b) {
