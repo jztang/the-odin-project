@@ -1,0 +1,23 @@
+.image-slider-container {
+  /* border: dashed 1px black; */
+  margin: 10px;
+  width: 600px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.prev-image-btn, .next-image-btn {
+  height: 150px;
+}
+
+.image-container {
+  border: solid 2px black;
+  /* height: 500px; */
+  /* width: 500px; */
+}
+
+.images {
+  border: solid 1px green;
+  height: 500px;
+  width: 500px;
+}
