@@ -8,17 +8,35 @@
     <script defer src="main.js"></script>
   </head>
   <body>
-    <div class="image-slider-container">
-      <button class="prev-image-btn">
-        <img src="../img/chevron-left.svg">
-      </button>
-      <div class="image-container">
-        <div class="images"></div>
-        <div class="nav-dots"></div>
+    <div id="image-slider-container">
+      <div id="image-slider-frame">
+        <div id="image-slider-images">
+          <img class="image-slider-image" src="../img/animals/animal0.jpg" />
+          <img class="image-slider-image" src="../img/animals/animal1.jpg" />
+          <img class="image-slider-image" src="../img/animals/animal2.jpg" />
+          <img class="image-slider-image" src="../img/animals/animal3.jpg" />
+          <img class="image-slider-image" src="../img/animals/animal4.jpg" />
+          <img class="image-slider-image" src="../img/animals/animal5.jpg" />
+          <img class="image-slider-image" src="../img/animals/animal6.jpg" />
+        </div>
       </div>
-      <button class="next-image-btn">
-        <img src="../img/chevron-right.svg">
-      </button>
+      <div id="image-slider-controls">
+        <button id="prev-image-btn">
+          <img src="../img/chevron-left.svg" />
+        </button>
+        <div id="nav-dot-container">
+          <button class="nav-dot nav-dot-cur"></button>
+          <button class="nav-dot"></button>
+          <button class="nav-dot"></button>
+          <button class="nav-dot"></button>
+          <button class="nav-dot"></button>
+          <button class="nav-dot"></button>
+          <button class="nav-dot"></button>
+        </div>
+        <button id="next-image-btn">
+          <img src="../img/chevron-right.svg" />
+        </button>
+      </div>
     </div>
   </body>
 </html>
